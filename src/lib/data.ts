@@ -63,7 +63,7 @@ export const projects = [
       tags: ['React', 'API', 'JavaScript'],
       link: 'https://github.com/PRABHAT-72/Weather-App',
       image: 'https://placehold.co/600x400.png',
-      imageAiHint: 'weather app ui'
+      imageAiHint: 'weather forecast app'
     },
     {
       name: 'Blog-Website',
@@ -79,7 +79,7 @@ export const projects = [
         tags: ['HTML', 'CSS', 'JavaScript'],
         link: 'https://github.com/PRABHAT-72/The-Inner-Battle',
         image: 'https://placehold.co/600x400.png',
-        imageAiHint: 'book landing page'
+        imageAiHint: 'book author website'
     },
   ];
   
@@ -164,7 +164,7 @@ export const experiences = [
   {
     company: 'JMR Infotech',
     role: 'Software Engineer',
-    period: 'Jan 2023 – Present',
+    period: 'Jan 2025 – April 2025',
     description: 'Developed and maintained key features for enterprise applications, including secure login/signup systems with JWT authentication and building a comprehensive Blog API. Focused on writing clean, scalable Java code and collaborating with cross-functional teams.',
     icon: Briefcase,
   },
