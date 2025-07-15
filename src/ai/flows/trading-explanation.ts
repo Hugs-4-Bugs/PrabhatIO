@@ -30,7 +30,7 @@ export async function tradingExplanation(input: TradingExplanationInput): Promis
 const tradingExplanationPrompt = ai.definePrompt({
   name: 'tradingExplanationPrompt',
   input: {schema: TradingExplanationInputSchema},
-  output: {schema: TradingExplanationOutputSchema},
+  output: {schema: z.object({ explanation: z.string() }) }, // Only need explanation here
   prompt: `You are an expert trading educator specializing in explaining complex trading concepts in a simple and easy-to-understand manner.
 
 You will use the concept provided to generate a concise explanation of the trading concept.
@@ -39,6 +39,27 @@ Concept: {{{concept}}}
 `,
 });
 
+async function generateWithRetry(options: any) {
+  let retries = 0;
+  const maxRetries = 3;
+
+  while(retries < maxRetries) {
+    try {
+      const result = await ai.generate(options);
+      return result;
+    } catch (error: any) {
+      if (error.message.includes('503') && retries < maxRetries - 1) {
+        retries++;
+        await new Promise(resolve => setTimeout(resolve, 1000 * retries));
+      } else {
+        throw error;
+      }
+    }
+  }
+  throw new Error('AI service is currently unavailable for generation. Please try again later.');
+}
+
+
 const tradingExplanationFlow = ai.defineFlow(
   {
     name: 'tradingExplanationFlow',
@@ -46,9 +67,30 @@ const tradingExplanationFlow = ai.defineFlow(
     outputSchema: TradingExplanationOutputSchema,
   },
   async input => {
-    const {output} = await tradingExplanationPrompt(input);
+    let explanationOutput;
+    let retries = 0;
+    const maxRetries = 3;
 
-    const textToSpeechResult = await ai.generate({
+    while(retries < maxRetries) {
+        try {
+            const { output } = await tradingExplanationPrompt(input);
+            explanationOutput = output;
+            break;
+        } catch (error: any) {
+             if (error.message.includes('503') && retries < maxRetries - 1) {
+                retries++;
+                await new Promise(resolve => setTimeout(resolve, 1000 * retries));
+            } else {
+                throw error;
+            }
+        }
+    }
+    
+    if (!explanationOutput) {
+        throw new Error('AI service is currently unavailable for explanation. Please try again later.');
+    }
+
+    const textToSpeechResult = await generateWithRetry({
       model: 'googleai/gemini-2.5-flash-preview-tts',
       config: {
         responseModalities: ['AUDIO'],
@@ -58,7 +100,7 @@ const tradingExplanationFlow = ai.defineFlow(
           },
         },
       },
-      prompt: output?.explanation ?? 'No explanation available.',
+      prompt: explanationOutput.explanation ?? 'No explanation available.',
     });
 
     if (!textToSpeechResult.media) {
@@ -73,7 +115,7 @@ const tradingExplanationFlow = ai.defineFlow(
     const audioDataUri = 'data:audio/wav;base64,' + (await toWav(audioBuffer));
 
     return {
-      explanation: output!.explanation,
+      explanation: explanationOutput!.explanation,
       audio: audioDataUri,
     };
   }

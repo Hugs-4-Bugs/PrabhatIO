@@ -51,8 +51,24 @@ const scheduleMeetingFlow = ai.defineFlow(
     inputSchema: ScheduleMeetingInputSchema,
     outputSchema: ScheduleMeetingOutputSchema,
   },
-  async input => {
-    const {output} = await prompt(input);
-    return output!;
+  async (input, streamingCallback) => {
+    let retries = 0;
+    const maxRetries = 3;
+
+    while (retries < maxRetries) {
+      try {
+        const {output} = await prompt(input);
+        return output!;
+      } catch (error: any) {
+        if (error.message.includes('503') && retries < maxRetries - 1) {
+          retries++;
+          await new Promise(resolve => setTimeout(resolve, 1000 * retries)); // Exponential backoff
+        } else {
+          throw error;
+        }
+      }
+    }
+    // This line should not be reached if maxRetries > 0, but is needed for type safety
+    throw new Error('AI service is currently unavailable. Please try again later.');
   }
 );
