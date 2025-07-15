@@ -154,6 +154,13 @@ export const skillCategories: { name: string; icon: Icon; skills: { name: string
 ];
 
 export const experiences = [
+    {
+    company: 'Startek',
+    role: 'L1 Technical Support Engineer',
+    period: 'June 2025 - Present',
+    description: 'Providing frontline technical assistance to customers, diagnosing and resolving hardware and software issues with a focus on delivering excellent service and timely solutions. Responsible for ticket management and escalating complex issues to senior engineers.',
+    icon: UserCheck,
+  },
   {
     company: 'JMR Infotech',
     role: 'Software Engineer',
