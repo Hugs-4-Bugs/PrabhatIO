@@ -1,4 +1,3 @@
-import AIChat from '@/components/ai-chat';
 import { Footer } from '@/components/layout/footer';
 import { Header } from '@/components/layout/header';
 import { AboutSection } from '@/components/sections/about-section';
@@ -25,7 +24,6 @@ export default function Home() {
         <ContactSection />
       </main>
       <Footer />
-      <AIChat />
     </div>
   );
 }

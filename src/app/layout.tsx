@@ -3,6 +3,7 @@ import './globals.css';
 import { ThemeProvider } from '@/components/providers/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
 import { Analytics } from "@vercel/analytics/react"
+import AIChat from '@/components/ai-chat';
 
 export const metadata: Metadata = {
   title: 'Prabhat Kumar: AI-Powered Portfolio',
@@ -38,6 +39,7 @@ export default function RootLayout({
                 {children}
             </div>
           <Toaster />
+          <AIChat />
         </ThemeProvider>
         <Analytics />
       </body>
