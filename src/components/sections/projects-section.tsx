@@ -89,7 +89,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0], index: n
       onMouseLeave={handleMouseLeave}
       className="p-1 perspective-card"
     >
-      <Card className="h-full overflow-hidden group transition-all duration-300 ease-out hover:shadow-2xl hover:shadow-primary/10">
+      <Card className="h-full overflow-hidden group transition-all duration-300 ease-out hover:shadow-2xl hover:shadow-primary/10 glassmorphism">
         <CardContent className="p-0 flex flex-col h-full">
           <div className="relative h-52 overflow-hidden">
             <Image
@@ -102,7 +102,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0], index: n
              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
           </div>
 
-          <div className="p-6 flex flex-col flex-grow bg-card font-body">
+          <div className="p-6 flex flex-col flex-grow bg-card/0 font-body">
             <h3 className="text-xl font-headline font-bold">{project.name}</h3>
             <p className="text-muted-foreground mt-2 flex-grow text-sm leading-relaxed">{project.description}</p>
             
@@ -130,8 +130,8 @@ export function ProjectsSection() {
     <section id="projects" className="bg-secondary/50">
       <div className="container">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-headline font-bold tracking-tighter">My Projects</h2>
-          <p className="text-lg text-muted-foreground mt-3 max-w-2xl mx-auto font-body">A selection of my work. Hover for a subtle 3D effect.</p>
+          <h2 className="text-3xl md:text-4xl font-headline font-bold tracking-tighter">Our Work</h2>
+          <p className="text-lg text-muted-foreground mt-3 max-w-2xl mx-auto font-body">A selection of our projects. Hover for a subtle 3D effect.</p>
         </div>
         
         <Carousel 

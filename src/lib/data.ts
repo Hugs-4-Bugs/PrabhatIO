@@ -31,8 +31,8 @@ import type { Icon } from 'lucide-react';
 export const navLinks = [
   { name: 'About', href: '#about' },
   { name: 'Skills', href: '#skills' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Experience', href: '#experience' },
+  { name: 'Work', href: '#projects' },
+  { name: 'Services', href: '#services' },
   { name: 'Contact', href: '#contact' },
 ];
 
@@ -281,6 +281,6 @@ export const tradingConcepts = [
     },
   ];
 
-export const userDetails = `Prabhat Kumar is a multifaceted professional based in Bengaluru, India, with a strong foundation in software engineering and a passion for emerging technologies. As a Java Developer with expertise in the Spring Boot framework, he excels at building robust, scalable backend systems and RESTful APIs. His skills extend across the full stack, including frontend development with React and modern cloud and DevOps practices with AWS, Docker, and Kubernetes.
+export const userDetails = `Our agency, founded by Prabhat Kumar, is a collective of passionate software engineers and designers based in Bengaluru, India. With a strong foundation in Java and the Spring Boot framework, we excel at building robust, scalable backend systems and RESTful APIs. Our skills extend across the full stack, including frontend development with React and modern cloud and DevOps practices with AWS, Docker, and Kubernetes.
 
-Beyond his technical prowess, Prabhat is an avid AI and Machine Learning enthusiast, constantly exploring new ways to integrate intelligence into applications. He is also a disciplined trader, applying his analytical skills to the financial markets through technical analysis and algorithmic strategies. This unique blend of technology and finance is complemented by his work as an author, having penned "The Inner Battle," a book that delves into personal growth and resilience. His academic journey includes a Bachelor of Engineering from Visvesvaraya Technological University, shaping him into a well-rounded and innovative thinker.`;
+Beyond our technical prowess, we are avid AI and Machine Learning enthusiasts, constantly exploring new ways to integrate intelligence into applications. This unique blend of technology and finance is complemented by our founder's work as an author, having penned "The Inner Battle," a book that delves into personal growth and resilience. Our approach is rooted in a solid engineering background from Visvesvaraya Technological University, shaping us into a team of well-rounded and innovative thinkers.`;

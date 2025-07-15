@@ -32,11 +32,11 @@ export function SkillsSection() {
   };
   
   return (
-    <section id="skills" className="bg-background">
+    <section id="skills" className="bg-secondary/50">
       <div className="container">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-headline font-bold">My Technical Skills</h2>
-          <p className="text-lg text-muted-foreground mt-2 font-body">The tools and technologies I use to build things.</p>
+          <h2 className="text-3xl md:text-4xl font-headline font-bold">Our Technical Expertise</h2>
+          <p className="text-lg text-muted-foreground mt-2 font-body">The tools and technologies we use to build digital experiences.</p>
         </div>
 
         <Tabs defaultValue={skillCategories[0].name} className="w-full">

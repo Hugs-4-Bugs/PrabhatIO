@@ -43,8 +43,8 @@ export function AboutSection() {
     <section id="about" className="bg-secondary/50">
       <div className="container">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-headline font-bold tracking-tighter">About Me</h2>
-          <p className="text-lg text-muted-foreground mt-3 max-w-2xl mx-auto font-body">A glimpse into my journey, passions, and professional background.</p>
+          <h2 className="text-3xl md:text-4xl font-headline font-bold tracking-tighter">About Our Agency</h2>
+          <p className="text-lg text-muted-foreground mt-3 max-w-2xl mx-auto font-body">A glimpse into our journey, passions, and professional background.</p>
         </div>
 
         <div className="grid lg:grid-cols-5 gap-12 items-start">
@@ -52,7 +52,7 @@ export function AboutSection() {
             <Card className="glassmorphism">
               <CardHeader>
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                   <CardTitle className="flex items-center gap-3 font-headline"><User className="text-primary"/> Biography</CardTitle>
+                   <CardTitle className="flex items-center gap-3 font-headline"><User className="text-primary"/> Our Story</CardTitle>
                    <div className="flex items-center gap-2">
                      <Button size="sm" variant="outline" onClick={toggleTone} disabled={isLoading}>
                        <Sparkles className="mr-2 h-4 w-4" />
@@ -79,7 +79,7 @@ export function AboutSection() {
 
             <Card className="mt-8 glassmorphism">
               <CardHeader>
-                <CardTitle className="flex items-center gap-3 font-headline"><GraduationCap  className="text-primary" /> Education</CardTitle>
+                <CardTitle className="flex items-center gap-3 font-headline"><GraduationCap  className="text-primary" /> Founder's Education</CardTitle>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-6 font-body">
@@ -103,7 +103,7 @@ export function AboutSection() {
           <div className="lg:col-span-2">
              <Card className="glassmorphism sticky top-24">
                 <CardHeader>
-                    <CardTitle className="flex items-center gap-3 font-headline"><Book className="text-primary"/> Author of The Inner Battle</CardTitle>
+                    <CardTitle className="flex items-center gap-3 font-headline"><Book className="text-primary"/> Founder's Publication</CardTitle>
                 </CardHeader>
                 <CardContent className="text-center">
                     <Image 
