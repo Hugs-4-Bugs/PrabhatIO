@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, MessageSquare } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-const titles = ["AI Integration.", "Cloud Solutions.", "Web Development.", "Automation."];
+const titles = ["Software Engineer.", "AI Enthusiast.", "Founder.", "Innovator."];
 
 export function HeroSection() {
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
@@ -49,7 +49,7 @@ export function HeroSection() {
         <div className="flex flex-col items-center md:items-start text-center md:text-left animate-fade-in">
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-headline font-extrabold tracking-tighter">
             <a href="https://quantumfusion-solutions.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-gradient transition-colors duration-300">
-              QuantumFusion Solutions
+              Prabhat Kumar
             </a>
             <span className="block text-gradient mt-2 min-h-[4rem] md:min-h-[5rem] lg:min-h-[7rem]">
               {displayedTitle}
@@ -62,7 +62,7 @@ export function HeroSection() {
           <div className="mt-10 flex flex-wrap gap-4 justify-center md:justify-start">
             <Button size="lg" asChild>
               <Link href="#projects">
-                View Our Work <ArrowRight className="ml-2 h-5 w-5" />
+                View My Work <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
             <Button size="lg" variant="outline" asChild>
@@ -76,7 +76,7 @@ export function HeroSection() {
           <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-3xl animate-hero-glow"></div>
           <Image
             src="https://placehold.co/600x600.png"
-            alt="QuantumFusion Solutions"
+            alt="Prabhat Kumar - QuantumFusion Solutions"
             width={600}
             height={600}
             priority
