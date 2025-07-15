@@ -1,15 +1,14 @@
 "use client";
 
 import { useState, useRef, useEffect } from 'react';
-import { Bot, Loader2, Mic, Send, Sparkles, X, Code, TrendingUp, Languages } from 'lucide-react';
+import { Bot, Loader2, Mic, Send, Sparkles, X, Code, TrendingUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { tradingExplanation } from '@/ai/flows/trading-explanation';
 import { projectExplanation } from '@/ai/flows/project-explanation';
-import { translateText } from '@/ai/flows/translate-text';
 import { projects } from '@/lib/data';
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
+import { Avatar, AvatarFallback } from './ui/avatar';
 import { Input } from './ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { cn } from '@/lib/utils';
@@ -22,7 +21,7 @@ type Message = {
   audio?: string;
 };
 
-type InteractionMode = 'idle' | 'trading' | 'projects' | 'translate';
+type InteractionMode = 'idle' | 'trading' | 'projects';
 
 // Hook to persist state in sessionStorage
 const useSessionState = <T,>(key: string, initialState: T): [T, React.Dispatch<React.SetStateAction<T>>] => {
@@ -55,7 +54,6 @@ export default function AIChat() {
   const [isLoading, setIsLoading] = useState(false);
   const [mode, setMode] = useSessionState<InteractionMode>('aiChatMode', 'idle');
   const [projectSelection, setProjectSelection] = useState('');
-  const [targetLanguage, setTargetLanguage] = useState('Spanish');
   const [isListening, setIsListening] = useState(false);
   
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -118,8 +116,6 @@ export default function AIChat() {
       addMessage('system', 'You can ask me to explain a trading concept (e.g., "What are Order Blocks?").');
     } else if (newMode === 'projects') {
       addMessage('system', 'Please select a project from the dropdown to get an AI-powered explanation.');
-    } else if (newMode === 'translate') {
-      addMessage('system', `I'm ready to translate your text into ${targetLanguage}. Type the text you want to translate.`);
     }
   };
 
@@ -135,8 +131,6 @@ export default function AIChat() {
             return;
         }
         userMessage = `Explain the project: ${selectedProject.name}`;
-    } else if (mode === 'translate') {
-      userMessage = `Translate to ${targetLanguage}: "${input}"`;
     }
 
     addMessage('user', userMessage);
@@ -151,9 +145,6 @@ export default function AIChat() {
         const selectedProject = projects.find(p => p.name === projectSelection);
         const res = await projectExplanation({ projectName: selectedProject!.name, projectDescription: selectedProject!.description });
         addMessage('assistant', res.explanation);
-      } else if (mode === 'translate') {
-        const res = await translateText({ text: input, targetLanguage });
-        addMessage('assistant', res.translatedText);
       }
     } catch (error) {
       console.error('AI Chat Error:', error);
@@ -176,8 +167,6 @@ export default function AIChat() {
     setInput('');
     setProjectSelection('');
   }
-
-  const languages = ['Spanish', 'French', 'German', 'Hindi', 'Japanese', 'Mandarin', 'Russian'];
 
   return (
     <>
@@ -231,7 +220,6 @@ export default function AIChat() {
                     <div className="flex flex-wrap gap-2 justify-center">
                         <Button variant="outline" onClick={() => handleModeSelection('trading')}><TrendingUp className="mr-2 h-4 w-4"/>Trading</Button>
                         <Button variant="outline" onClick={() => handleModeSelection('projects')}><Code className="mr-2 h-4 w-4"/>Projects</Button>
-                        <Button variant="outline" onClick={() => handleModeSelection('translate')}><Languages className="mr-2 h-4 w-4"/>Translate</Button>
                     </div>
                 </div>
             )}
@@ -247,16 +235,6 @@ export default function AIChat() {
                     {projects.map(p => <SelectItem key={p.name} value={p.name}>{p.name}</SelectItem>)}
                   </SelectContent>
                 </Select>
-              ) : mode === 'translate' ? (
-                <>
-                <Input value={input} onChange={e => setInput(e.target.value)} placeholder="Text to translate..." className="flex-1" disabled={isLoading} />
-                 <Select value={targetLanguage} onValueChange={setTargetLanguage}>
-                  <SelectTrigger className="w-[140px]"><SelectValue placeholder="Language" /></SelectTrigger>
-                  <SelectContent>
-                    {languages.map(lang => <SelectItem key={lang} value={lang}>{lang}</SelectItem>)}
-                  </SelectContent>
-                </Select>
-                </>
               ) : (
                 <Input value={input} onChange={e => setInput(e.target.value)} placeholder="Ask about a trading concept..." className="flex-1" disabled={isLoading} />
               )}
