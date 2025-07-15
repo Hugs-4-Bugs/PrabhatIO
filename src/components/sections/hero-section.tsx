@@ -48,7 +48,9 @@ export function HeroSection() {
       <div className="container grid md:grid-cols-2 gap-12 items-center min-h-[calc(100vh-5rem)] py-20 relative z-10">
         <div className="flex flex-col items-center md:items-start text-center md:text-left animate-fade-in">
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-headline font-extrabold tracking-tighter">
-            QuantumFusion Solutions
+            <a href="https://quantumfusion-solutions.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-gradient transition-colors duration-300">
+              QuantumFusion Solutions
+            </a>
             <span className="block text-gradient mt-2 min-h-[4rem] md:min-h-[5rem] lg:min-h-[7rem]">
               {displayedTitle}
               <span className="opacity-50">|</span>

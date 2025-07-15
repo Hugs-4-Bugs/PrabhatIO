@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -15,6 +16,12 @@ export function AboutSection() {
   const [isExpanded, setIsExpanded] = useState(false);
   const [currentTone, setCurrentTone] = useState<'professional' | 'casual'>('professional');
 
+  const qfsLink = "https://quantumfusion-solutions.vercel.app/";
+  const linkedUserDetails = userDetails.replace(
+      /QuantumFusion Solutions/g,
+      `<a href="${qfsLink}" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">QuantumFusion Solutions</a>`
+  );
+
   useEffect(() => {
     async function fetchSummary() {
       setIsLoading(true);
@@ -24,16 +31,20 @@ export function AboutSection() {
           tone: currentTone, 
           userDetails 
         });
-        setSummary(result.summary);
+        const linkedSummary = result.summary.replace(
+          /QuantumFusion Solutions/g,
+          `<a href="${qfsLink}" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">QuantumFusion Solutions</a>`
+        );
+        setSummary(linkedSummary);
       } catch (error) {
         console.error('Failed to generate about me summary:', error);
-        setSummary(isExpanded ? userDetails : userDetails.substring(0, 200) + '...');
+        setSummary(isExpanded ? linkedUserDetails : linkedUserDetails.substring(0, 200) + '...');
       } finally {
         setIsLoading(false);
       }
     }
     fetchSummary();
-  }, [isExpanded, currentTone]);
+  }, [isExpanded, currentTone, linkedUserDetails]);
 
   const toggleExpansion = () => setIsExpanded(!isExpanded);
   
@@ -69,7 +80,7 @@ export function AboutSection() {
                     <Skeleton className="h-4 w-3/4" />
                   </div>
                 ) : (
-                  <p className="text-muted-foreground leading-relaxed font-body">{summary}</p>
+                  <p className="text-muted-foreground leading-relaxed font-body" dangerouslySetInnerHTML={{ __html: summary }} />
                 )}
                 <Button variant="link" onClick={toggleExpansion} className="px-0 mt-2 text-primary">
                   {isExpanded ? 'Show Less' : 'Read More...'}
