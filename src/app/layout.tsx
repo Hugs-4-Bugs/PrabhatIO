@@ -41,7 +41,9 @@ export default function RootLayout({
             </main>
           </div>
           <Toaster />
-          <AIChat />
+          <div className="relative z-50">
+            <AIChat />
+          </div>
         </ThemeProvider>
         <Analytics />
       </body>
