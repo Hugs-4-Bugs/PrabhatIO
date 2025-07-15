@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, MessageSquare } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 const titles = ["Java Developer.", "AI Innovator.", "Trader.", "Author."];
 
@@ -39,8 +40,8 @@ export function HeroSection() {
 
   return (
     <section id="home" className="relative overflow-hidden bg-background">
-      <div className="container grid md:grid-cols-2 gap-12 items-center min-h-[calc(100vh-5rem)]">
-        <div className="flex flex-col items-center md:items-start text-center md:text-left">
+      <div className="container grid md:grid-cols-2 gap-12 items-center min-h-[calc(100vh-5rem)] py-20">
+        <div className="flex flex-col items-center md:items-start text-center md:text-left animate-fade-in">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-headline font-bold tracking-tight">
             Prabhat Kumar
             <span className="block text-gradient mt-2 min-h-[4rem] md:min-h-[5rem] lg:min-h-[6rem]">
@@ -64,7 +65,7 @@ export function HeroSection() {
             </Button>
           </div>
         </div>
-        <div className="relative w-full max-w-sm md:max-w-md lg:max-w-lg mx-auto">
+        <div className="relative w-full max-w-sm md:max-w-md lg:max-w-lg mx-auto animate-fade-in [animation-delay:200ms]">
           <div className="absolute inset-0 bg-primary/20 rounded-full blur-3xl animate-hero-glow"></div>
           <Image
             src="https://placehold.co/600x600.png"
@@ -72,7 +73,7 @@ export function HeroSection() {
             width={600}
             height={600}
             priority
-            className="rounded-full object-cover z-10 relative border-8 border-background/50"
+            className="rounded-full object-cover z-10 relative border-8 border-background/50 shadow-2xl"
             data-ai-hint="man portrait"
           />
         </div>

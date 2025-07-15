@@ -83,4 +83,13 @@
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-br from-primary to-accent;
   }
+
+  .perspective-card {
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+  }
+
+  .perspective-card:hover {
+    transform: perspective(1000px) rotateY(var(--rotate-y, 0)) rotateX(var(--rotate-x, 0)) scale3d(1.05, 1.05, 1.05);
+  }
 }
