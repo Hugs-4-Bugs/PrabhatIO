@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -41,7 +42,9 @@ export function Header() {
     )}>
       <div className="container flex h-20 items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <Logo />
+          <div className="w-10 h-10">
+            <Logo />
+          </div>
         </Link>
 
         <nav className="hidden md:flex items-center gap-1">
