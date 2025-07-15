@@ -55,7 +55,7 @@ export const projects = [
       tags: ['React', 'JavaScript', 'HTML5', 'CSS3', 'REST API'],
       link: 'https://github.com/PRABHAT-72/Trade-Pros-Front-End',
       image: 'https://placehold.co/600x400.png',
-      imageAiHint: 'trading dashboard'
+      imageAiHint: 'trading platform interface'
     },
     {
       name: 'Weather-App',
@@ -63,7 +63,7 @@ export const projects = [
       tags: ['React', 'API', 'JavaScript'],
       link: 'https://github.com/PRABHAT-72/Weather-App',
       image: 'https://placehold.co/600x400.png',
-      imageAiHint: 'weather forecast'
+      imageAiHint: 'weather app ui'
     },
     {
       name: 'Blog-Website',
@@ -71,7 +71,7 @@ export const projects = [
       tags: ['Spring Boot', 'React', 'MySQL'],
       link: 'https://github.com/PRABHAT-72/Blog-Website',
       image: 'https://placehold.co/600x400.png',
-      imageAiHint: 'blog article'
+      imageAiHint: 'modern blog design'
     },
     {
         name: 'The-Inner-Battle',
@@ -79,7 +79,7 @@ export const projects = [
         tags: ['HTML', 'CSS', 'JavaScript'],
         link: 'https://github.com/PRABHAT-72/The-Inner-Battle',
         image: 'https://placehold.co/600x400.png',
-        imageAiHint: 'book cover'
+        imageAiHint: 'book landing page'
     },
   ];
   
@@ -154,7 +154,7 @@ export const skillCategories: { name: string; icon: Icon; skills: { name: string
 ];
 
 export const experiences = [
-    {
+  {
     company: 'Startek',
     role: 'L1 Technical Support Engineer',
     period: 'June 2025 - Present',
