@@ -4,12 +4,31 @@ import { ThemeProvider } from '@/components/providers/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
 import { Analytics } from "@vercel/analytics/react"
 import AIChat from '@/components/ai-chat';
+import { Poppins, PT_Sans, Source_Code_Pro } from 'next/font/google';
+import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: 'Prabhat Kumar: AI-Powered Portfolio',
   description: 'Prabhat Kumar - Software Engineer, AI Enthusiast, Trader, and Author. Merging Intelligence with Innovation.',
   keywords: ['Prabhat Kumar', 'Software Engineer', 'AI', 'Java Developer', 'Trader', 'Author', 'Portfolio'],
 };
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800', '900'],
+  variable: '--font-poppins',
+});
+
+const ptSans = PT_Sans({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-pt-sans',
+});
+
+const sourceCodePro = Source_Code_Pro({
+  subsets: ['latin'],
+  variable: '--font-source-code-pro',
+});
 
 export default function RootLayout({
   children,
@@ -18,29 +37,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body className="font-sans antialiased bg-background text-foreground">
+      <body className={cn(
+        "font-body antialiased bg-background text-foreground",
+        poppins.variable, 
+        ptSans.variable, 
+        sourceCodePro.variable
+      )}>
         <ThemeProvider>
           <div className="relative">
-            <div id="stars"></div>
-            <div id="stars2"></div>
-            <div id="stars3"></div>
+            <div className="absolute inset-0 -z-10 h-full w-full">
+              <div id="stars"></div>
+              <div id="stars2"></div>
+              <div id="stars3"></div>
+            </div>
             <main className="relative z-10">
               {children}
             </main>
           </div>
-          <Toaster />
           <div className="relative z-50">
             <AIChat />
           </div>

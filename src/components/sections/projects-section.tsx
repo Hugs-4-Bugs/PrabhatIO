@@ -39,8 +39,8 @@ function ProjectExplanation({ projectName, projectDescription }: { projectName: 
       </DialogTrigger>
       <DialogContent className="sm:max-w-[625px]">
         <DialogHeader>
-          <DialogTitle>AI Explanation: {projectName}</DialogTitle>
-          <DialogDescription>
+          <DialogTitle className="font-headline">AI Explanation: {projectName}</DialogTitle>
+          <DialogDescription className="font-body">
             An AI-generated overview of the project's technology and challenges.
           </DialogDescription>
         </DialogHeader>
@@ -53,7 +53,7 @@ function ProjectExplanation({ projectName, projectDescription }: { projectName: 
             </div>
           ) : (
             <ScrollArea className="h-[200px] pr-4">
-               <p className="text-sm text-muted-foreground whitespace-pre-wrap">{explanation}</p>
+               <p className="text-sm text-muted-foreground whitespace-pre-wrap font-code">{explanation}</p>
             </ScrollArea>
           )}
         </div>
@@ -102,12 +102,12 @@ function ProjectCard({ project, index }: { project: typeof projects[0], index: n
              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
           </div>
 
-          <div className="p-6 flex flex-col flex-grow bg-card">
-            <h3 className="text-xl font-bold">{project.name}</h3>
+          <div className="p-6 flex flex-col flex-grow bg-card font-body">
+            <h3 className="text-xl font-headline font-bold">{project.name}</h3>
             <p className="text-muted-foreground mt-2 flex-grow text-sm leading-relaxed">{project.description}</p>
             
             <div className="flex flex-wrap gap-2 my-4">
-                {project.tags.map(tag => <Badge key={tag} variant="secondary">{tag}</Badge>)}
+                {project.tags.map(tag => <Badge key={tag} variant="secondary" className="font-code">{tag}</Badge>)}
             </div>
 
             <div className="flex flex-wrap gap-2 items-center mt-auto pt-4 border-t border-border/50">
@@ -130,8 +130,8 @@ export function ProjectsSection() {
     <section id="projects" className="bg-secondary/50">
       <div className="container">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tighter">My Projects</h2>
-          <p className="text-lg text-muted-foreground mt-3 max-w-2xl mx-auto">A selection of my work. Hover for a subtle 3D effect.</p>
+          <h2 className="text-3xl md:text-4xl font-headline font-bold tracking-tighter">My Projects</h2>
+          <p className="text-lg text-muted-foreground mt-3 max-w-2xl mx-auto font-body">A selection of my work. Hover for a subtle 3D effect.</p>
         </div>
         
         <Carousel 

@@ -7,7 +7,7 @@ export function ServicesSection() {
       <div className="container">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-headline font-bold">Services I Offer</h2>
-          <p className="text-lg text-muted-foreground mt-2">How I can help you build your next project.</p>
+          <p className="text-lg text-muted-foreground mt-2 font-body">How I can help you build your next project.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, index) => (
@@ -19,7 +19,7 @@ export function ServicesSection() {
                 <CardTitle className="text-lg font-headline">{service.name}</CardTitle>
               </CardHeader>
               <CardContent className="flex-grow">
-                <p className="text-sm text-muted-foreground">{service.description}</p>
+                <p className="text-sm text-muted-foreground font-body">{service.description}</p>
               </CardContent>
             </Card>
           ))}

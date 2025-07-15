@@ -42,18 +42,18 @@ export function HeroSection() {
     <section id="home" className="relative overflow-hidden">
       <div className="absolute inset-0 z-0 opacity-40">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary rounded-full filter blur-3xl animate-blob"></div>
-        <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-secondary rounded-full filter blur-3xl animate-blob animation-delay-2000"></div>
+        <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-accent rounded-full filter blur-3xl animate-blob animation-delay-2000"></div>
       </div>
       <div className="container grid md:grid-cols-2 gap-12 items-center min-h-[calc(100vh-5rem)] py-20 relative z-10">
         <div className="flex flex-col items-center md:items-start text-center md:text-left animate-fade-in">
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tighter">
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-headline font-extrabold tracking-tighter">
             Prabhat Kumar
             <span className="block text-gradient mt-2 min-h-[4rem] md:min-h-[5rem] lg:min-h-[7rem]">
               {displayedTitle}
               <span className="opacity-50">|</span>
             </span>
           </h1>
-          <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-xl">
+          <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-xl font-body">
             Merging Intelligence with Innovation.
           </p>
           <div className="mt-10 flex flex-wrap gap-4 justify-center md:justify-start">
@@ -70,7 +70,7 @@ export function HeroSection() {
           </div>
         </div>
         <div className="relative w-full max-w-sm md:max-w-md lg:max-w-lg mx-auto animate-fade-in [animation-delay:200ms]">
-          <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-primary/5 rounded-full blur-3xl animate-hero-glow"></div>
+          <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-3xl animate-hero-glow"></div>
           <Image
             src="https://placehold.co/600x600.png"
             alt="Prabhat Kumar"

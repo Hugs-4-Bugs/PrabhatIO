@@ -36,7 +36,7 @@ export function SkillsSection() {
       <div className="container">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-headline font-bold">My Technical Skills</h2>
-          <p className="text-lg text-muted-foreground mt-2">The tools and technologies I use to build things.</p>
+          <p className="text-lg text-muted-foreground mt-2 font-body">The tools and technologies I use to build things.</p>
         </div>
 
         <Tabs defaultValue={skillCategories[0].name} className="w-full">
@@ -64,7 +64,7 @@ export function SkillsSection() {
                             <div onMouseEnter={() => handleSkillHover(skill.name)}>
                               <div className="flex items-center gap-3 p-3 rounded-lg bg-background hover:bg-secondary transition-colors cursor-pointer border">
                                 <skill.icon className="h-5 w-5 text-accent" />
-                                <span className="font-medium">{skill.name}</span>
+                                <span className="font-medium font-body">{skill.name}</span>
                               </div>
                             </div>
                           </TooltipTrigger>
@@ -72,7 +72,7 @@ export function SkillsSection() {
                             {loadingSkill === skill.name ? (
                                <Skeleton className="h-4 w-48" />
                             ) : (
-                                <p className="max-w-xs">{summaries[skill.name]}</p>
+                                <p className="max-w-xs font-body">{summaries[skill.name]}</p>
                             )}
                           </TooltipContent>
                         </Tooltip>

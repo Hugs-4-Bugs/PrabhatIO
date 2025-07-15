@@ -7,7 +7,7 @@ export function ExperienceSection() {
       <div className="container">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-headline font-bold">Work Experience</h2>
-          <p className="text-lg text-muted-foreground mt-2">My professional journey so far.</p>
+          <p className="text-lg text-muted-foreground mt-2 font-body">My professional journey so far.</p>
         </div>
 
         <div className="relative max-w-2xl mx-auto">
@@ -22,7 +22,7 @@ export function ExperienceSection() {
                       <CardDescription>{exp.company} &middot; {exp.period}</CardDescription>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-sm text-muted-foreground">{exp.description}</p>
+                      <p className="text-sm text-muted-foreground font-body">{exp.description}</p>
                     </CardContent>
                   </Card>
                 </div>
