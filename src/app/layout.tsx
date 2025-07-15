@@ -31,7 +31,12 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased bg-background text-foreground">
         <ThemeProvider>
-          {children}
+            <div id="stars"></div>
+            <div id="stars2"></div>
+            <div id="stars3"></div>
+            <div className="relative z-10">
+                {children}
+            </div>
           <Toaster />
         </ThemeProvider>
         <Analytics />

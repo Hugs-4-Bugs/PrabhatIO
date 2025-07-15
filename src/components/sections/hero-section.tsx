@@ -39,8 +39,12 @@ export function HeroSection() {
   }, [charIndex, isDeleting, currentTitleIndex]);
 
   return (
-    <section id="home" className="relative overflow-hidden bg-background">
-      <div className="container grid md:grid-cols-2 gap-12 items-center min-h-[calc(100vh-5rem)] py-20">
+    <section id="home" className="relative overflow-hidden">
+      <div className="absolute inset-0 z-0 opacity-40">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary rounded-full filter blur-3xl animate-blob"></div>
+        <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-secondary rounded-full filter blur-3xl animate-blob animation-delay-2000"></div>
+      </div>
+      <div className="container grid md:grid-cols-2 gap-12 items-center min-h-[calc(100vh-5rem)] py-20 relative z-10">
         <div className="flex flex-col items-center md:items-start text-center md:text-left animate-fade-in">
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tighter">
             Prabhat Kumar

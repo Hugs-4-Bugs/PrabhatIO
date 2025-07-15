@@ -40,7 +40,7 @@ export function Header() {
     )}>
       <div className="container flex h-20 items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <span className="text-xl font-bold">Prabhat Kumar</span>
+          <span className="text-xl font-bold tracking-wider text-gradient">PK</span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-1">
@@ -68,7 +68,7 @@ export function Header() {
                             <span className="sr-only">Open menu</span>
                         </Button>
                     </SheetTrigger>
-                    <SheetContent side="right">
+                    <SheetContent side="right" className="bg-background/90 backdrop-blur-lg">
                         <nav className="flex flex-col gap-4 mt-8">
                             {navItems}
                         </nav>
