@@ -1,16 +1,24 @@
+
 "use client";
 
 import { useState, useRef, useEffect } from 'react';
-import { Bot, Loader2, Mic, Send, Sparkles, X, Code, TrendingUp } from 'lucide-react';
+import { Bot, Loader2, Mic, Send, Sparkles, X, Code, TrendingUp, Calendar } from 'lucide-react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { tradingExplanation } from '@/ai/flows/trading-explanation';
 import { projectExplanation } from '@/ai/flows/project-explanation';
+import { scheduleMeeting, ScheduleMeetingInput } from '@/ai/flows/schedule-meeting';
 import { projects } from '@/lib/data';
 import { Avatar, AvatarFallback } from './ui/avatar';
 import { Input } from './ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Textarea } from '@/components/ui/textarea';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
 
@@ -21,7 +29,14 @@ type Message = {
   audio?: string;
 };
 
-type InteractionMode = 'idle' | 'trading' | 'projects';
+type InteractionMode = 'idle' | 'trading' | 'projects' | 'schedule';
+
+const contactFormSchema = z.object({
+  name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
+  email: z.string().email({ message: 'Please enter a valid email address.' }),
+  topic: z.string().min(5, { message: 'Topic must be at least 5 characters.' }),
+  availability: z.string().min(10, { message: 'Please describe your availability.' }),
+});
 
 // Hook to persist state in sessionStorage
 const useSessionState = <T,>(key: string, initialState: T): [T, React.Dispatch<React.SetStateAction<T>>] => {
@@ -60,6 +75,11 @@ export default function AIChat() {
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<any>(null);
   const { toast } = useToast();
+  
+  const form = useForm<z.infer<typeof contactFormSchema>>({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: { name: '', email: '', topic: '', availability: '' },
+  });
 
   useEffect(() => {
     if (scrollAreaRef.current) {
@@ -116,12 +136,14 @@ export default function AIChat() {
       addMessage('system', 'You can ask me to explain a trading concept (e.g., "What are Order Blocks?").');
     } else if (newMode === 'projects') {
       addMessage('system', 'Please select a project from the dropdown to get an AI-powered explanation.');
+    } else if (newMode === 'schedule') {
+        addMessage('system', 'Please fill out the form below to schedule a meeting with me.');
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!input && mode !== 'projects') return;
+  const handleSubmit = async (e?: React.FormEvent) => {
+    e?.preventDefault();
+    if (!input && mode !== 'projects' && mode !== 'schedule') return;
 
     let userMessage = input;
     if (mode === 'projects') {
@@ -154,6 +176,22 @@ export default function AIChat() {
     }
   };
 
+  const handleScheduleSubmit = async (values: ScheduleMeetingInput) => {
+    addMessage('user', `Meeting Request: ${values.topic}`);
+    setIsLoading(true);
+    try {
+      const result = await scheduleMeeting(values);
+      addMessage('assistant', result.confirmation);
+      form.reset();
+      setMode('idle'); // Or some confirmation state
+    } catch (error) {
+      console.error('Failed to schedule meeting via AI chat:', error);
+      addMessage('assistant', 'Sorry, I couldn\'t schedule the meeting. Please try again later.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const handlePlayAudio = (audioDataUri: string) => {
     if (audioRef.current) {
       audioRef.current.src = audioDataUri;
@@ -166,6 +204,7 @@ export default function AIChat() {
     setMode('idle');
     setInput('');
     setProjectSelection('');
+    form.reset();
   }
 
   return (
@@ -220,35 +259,59 @@ export default function AIChat() {
                     <div className="flex flex-wrap gap-2 justify-center">
                         <Button variant="outline" onClick={() => handleModeSelection('trading')}><TrendingUp className="mr-2 h-4 w-4"/>Trading</Button>
                         <Button variant="outline" onClick={() => handleModeSelection('projects')}><Code className="mr-2 h-4 w-4"/>Projects</Button>
+                        <Button variant="outline" onClick={() => handleModeSelection('schedule')}><Calendar className="mr-2 h-4 w-4"/>Schedule Meeting</Button>
                     </div>
                 </div>
             )}
           </div>
         </ScrollArea>
         {mode !== 'idle' ? (
-            <div className="p-4 border-t bg-background">
-            <form onSubmit={handleSubmit} className="flex items-center gap-2">
-              {mode === 'projects' ? (
-                <Select value={projectSelection} onValueChange={setProjectSelection}>
-                  <SelectTrigger className="flex-1"><SelectValue placeholder="Select a project" /></SelectTrigger>
-                  <SelectContent>
-                    {projects.map(p => <SelectItem key={p.name} value={p.name}>{p.name}</SelectItem>)}
-                  </SelectContent>
-                </Select>
-              ) : (
-                <Input value={input} onChange={e => setInput(e.target.value)} placeholder="Ask about a trading concept..." className="flex-1" disabled={isLoading} />
-              )}
-               {mode === 'trading' && (
-                <Button size="icon" variant="ghost" type="button" onClick={handleVoiceInput} disabled={isLoading} className={cn(isListening && 'text-red-500')}>
-                    <Mic className="h-5 w-5" />
+          <div className="p-4 border-t bg-background">
+            {mode === 'schedule' ? (
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(handleScheduleSubmit)} className="space-y-3">
+                  <FormField control={form.control} name="name" render={({ field }) => (
+                      <FormItem><FormLabel>Name</FormLabel><FormControl><Input placeholder="John Doe" {...field} /></FormControl><FormMessage /></FormItem>
+                  )}/>
+                  <FormField control={form.control} name="email" render={({ field }) => (
+                      <FormItem><FormLabel>Email</FormLabel><FormControl><Input placeholder="you@example.com" {...field} /></FormControl><FormMessage /></FormItem>
+                  )}/>
+                   <FormField control={form.control} name="topic" render={({ field }) => (
+                      <FormItem><FormLabel>Topic</FormLabel><FormControl><Input placeholder="Project collaboration..." {...field} /></FormControl><FormMessage /></FormItem>
+                  )}/>
+                   <FormField control={form.control} name="availability" render={({ field }) => (
+                      <FormItem><FormLabel>Availability</FormLabel><FormControl><Textarea placeholder="Weekdays after 5 PM IST..." {...field} /></FormControl><FormMessage /></FormItem>
+                  )}/>
+                  <Button type="submit" className="w-full" disabled={isLoading}>
+                    {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Send className="mr-2 h-4 w-4" />}
+                    Send Request
+                  </Button>
+                </form>
+              </Form>
+            ) : (
+              <form onSubmit={handleSubmit} className="flex items-center gap-2">
+                {mode === 'projects' ? (
+                  <Select value={projectSelection} onValueChange={setProjectSelection}>
+                    <SelectTrigger className="flex-1"><SelectValue placeholder="Select a project" /></SelectTrigger>
+                    <SelectContent>
+                      {projects.map(p => <SelectItem key={p.name} value={p.name}>{p.name}</SelectItem>)}
+                    </SelectContent>
+                  </Select>
+                ) : (
+                  <Input value={input} onChange={e => setInput(e.target.value)} placeholder="Ask about a trading concept..." className="flex-1" disabled={isLoading} />
+                )}
+                {mode === 'trading' && (
+                  <Button size="icon" variant="ghost" type="button" onClick={handleVoiceInput} disabled={isLoading} className={cn(isListening && 'text-red-500')}>
+                      <Mic className="h-5 w-5" />
+                  </Button>
+                )}
+                <Button type="submit" size="icon" disabled={isLoading || (mode === 'projects' && !projectSelection)}>
+                  <Send className="h-5 w-5" />
                 </Button>
-               )}
-              <Button type="submit" size="icon" disabled={isLoading || (mode === 'projects' && !projectSelection)}>
-                <Send className="h-5 w-5" />
-              </Button>
-            </form>
+              </form>
+            )}
             <Button variant="link" size="sm" className="w-full mt-2 text-muted-foreground" onClick={resetChat}>Start Over</Button>
-            </div>
+          </div>
         ) : (messages.length > 0 && 
             <div className="p-4 border-t bg-background text-center">
                 <Button variant="outline" onClick={resetChat}>Start Over</Button>
