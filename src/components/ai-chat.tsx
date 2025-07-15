@@ -214,7 +214,7 @@ export default function AIChat() {
                 </div>
               </div>
             )}
-            {messages.length === 0 && (
+            {messages.length === 0 && mode === 'idle' && (
                 <div className="text-center p-4">
                     <p className="text-muted-foreground mb-4">What would you like to discuss?</p>
                     <div className="flex flex-wrap gap-2 justify-center">
@@ -225,7 +225,7 @@ export default function AIChat() {
             )}
           </div>
         </ScrollArea>
-        {mode !== 'idle' && (
+        {mode !== 'idle' ? (
             <div className="p-4 border-t bg-background">
             <form onSubmit={handleSubmit} className="flex items-center gap-2">
               {mode === 'projects' ? (
@@ -248,6 +248,10 @@ export default function AIChat() {
               </Button>
             </form>
             <Button variant="link" size="sm" className="w-full mt-2 text-muted-foreground" onClick={resetChat}>Start Over</Button>
+            </div>
+        ) : (messages.length > 0 && 
+            <div className="p-4 border-t bg-background text-center">
+                <Button variant="outline" onClick={resetChat}>Start Over</Button>
             </div>
         )}
       </SheetContent>
