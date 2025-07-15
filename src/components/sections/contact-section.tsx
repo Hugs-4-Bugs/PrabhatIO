@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useForm } from 'react-hook-form';
@@ -8,7 +9,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
-import { socialLinks, userDetails } from '@/lib/data';
+import { socialLinks } from '@/lib/data';
 import { Mail, MapPin, Send, Loader2 } from 'lucide-react';
 import { scheduleMeeting } from '@/ai/flows/schedule-meeting';
 import { useToast } from '@/hooks/use-toast';
@@ -55,7 +56,7 @@ export function ContactSection() {
       <div className="container">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-headline font-bold">Get In Touch</h2>
-          <p className="text-lg text-muted-foreground mt-2">Let's build something amazing together. Schedule a meeting with AI.</p>
+          <p className="text-lg text-muted-foreground mt-2">Let's build something amazing together. Schedule a meeting with our AI.</p>
         </div>
 
         <div className="grid md:grid-cols-5 gap-10">
@@ -67,14 +68,14 @@ export function ContactSection() {
                     <CardContent className="space-y-4">
                         <div className="flex items-center gap-4">
                             <Mail className="h-5 w-5 text-primary"/>
-                            <a href="mailto:mailtoprabhat72@gmail.com" className="text-muted-foreground hover:text-primary">mailtoprabhat72@gmail.com</a>
+                            <a href="mailto:contact@quantumfusions.com" className="text-muted-foreground hover:text-primary">contact@quantumfusions.com</a>
                         </div>
                         <div className="flex items-center gap-4">
                             <MapPin className="h-5 w-5 text-primary"/>
                             <span className="text-muted-foreground">Bengaluru, India</span>
                         </div>
                         <div className="pt-4">
-                            <h4 className="font-semibold mb-2">Follow Me</h4>
+                            <h4 className="font-semibold mb-2">Follow Us</h4>
                             <div className="flex items-center gap-2">
                                 {socialLinks.slice(0, 5).map((link) => (
                                     <Button key={link.name} variant="outline" size="icon" asChild>

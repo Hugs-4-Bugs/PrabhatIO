@@ -1,3 +1,4 @@
+
 import {
   Github,
   Linkedin,
@@ -281,6 +282,16 @@ export const tradingConcepts = [
     },
   ];
 
-export const userDetails = `Our agency, founded by Prabhat Kumar, is a collective of passionate software engineers and designers based in Bengaluru, India. With a strong foundation in Java and the Spring Boot framework, we excel at building robust, scalable backend systems and RESTful APIs. Our skills extend across the full stack, including frontend development with React and modern cloud and DevOps practices with AWS, Docker, and Kubernetes.
+export const userDetails = `I am the founder and CEO of QuantumFusion Solutions, an innovation-driven technology company specializing in AI, cloud computing, and automation. At QuantumFusion Solutions, we focus on building intelligent, scalable, and secure software solutions tailored to solve real-world business challenges.
 
-Beyond our technical prowess, we are avid AI and Machine Learning enthusiasts, constantly exploring new ways to integrate intelligence into applications. This unique blend of technology and finance is complemented by our founder's work as an author, having penned "The Inner Battle," a book that delves into personal growth and resilience. Our approach is rooted in a solid engineering background from Visvesvaraya Technological University, shaping us into a team of well-rounded and innovative thinkers.`;
+Our work includes:
+
+AI Integration & Automation: Designing smart systems using machine learning, NLP, and computer vision to automate complex workflows.
+
+Cloud-Based Development: Creating modern, resilient, and scalable cloud-native applications on AWS, GCP, and other platforms.
+
+Web & App Development: Delivering secure, full-stack applications with frameworks like Spring Boot, Angular, React, and Node.js.
+
+Data-Driven Insights: Building analytics pipelines and dashboards to enable better decision-making through data.
+
+Learn more about QuantumFusion Solutions on our Website or LinkedIn Page.`;

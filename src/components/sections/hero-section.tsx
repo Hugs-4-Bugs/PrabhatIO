@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -7,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, MessageSquare } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-const titles = ["Java Developer.", "AI Innovator.", "Trader.", "Author."];
+const titles = ["AI Integration.", "Cloud Solutions.", "Web Development.", "Automation."];
 
 export function HeroSection() {
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
@@ -47,7 +48,7 @@ export function HeroSection() {
       <div className="container grid md:grid-cols-2 gap-12 items-center min-h-[calc(100vh-5rem)] py-20 relative z-10">
         <div className="flex flex-col items-center md:items-start text-center md:text-left animate-fade-in">
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-headline font-extrabold tracking-tighter">
-            Prabhat Kumar
+            QuantumFusion Solutions
             <span className="block text-gradient mt-2 min-h-[4rem] md:min-h-[5rem] lg:min-h-[7rem]">
               {displayedTitle}
               <span className="opacity-50">|</span>
@@ -59,7 +60,7 @@ export function HeroSection() {
           <div className="mt-10 flex flex-wrap gap-4 justify-center md:justify-start">
             <Button size="lg" asChild>
               <Link href="#projects">
-                View Projects <ArrowRight className="ml-2 h-5 w-5" />
+                View Our Work <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
             <Button size="lg" variant="outline" asChild>
@@ -73,12 +74,12 @@ export function HeroSection() {
           <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-3xl animate-hero-glow"></div>
           <Image
             src="https://placehold.co/600x600.png"
-            alt="Prabhat Kumar"
+            alt="QuantumFusion Solutions"
             width={600}
             height={600}
             priority
             className="rounded-full object-cover z-10 relative border-8 border-background/50 shadow-2xl"
-            data-ai-hint="man portrait"
+            data-ai-hint="abstract technology"
           />
         </div>
       </div>
