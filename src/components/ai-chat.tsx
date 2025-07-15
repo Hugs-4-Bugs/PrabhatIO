@@ -211,11 +211,13 @@ export default function AIChat() {
     <>
     <audio ref={audioRef} />
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
-      <SheetTrigger asChild>
-        <Button className="fixed bottom-6 right-6 h-16 w-16 rounded-full shadow-lg" size="icon">
-          <Bot className="h-8 w-8" />
-        </Button>
-      </SheetTrigger>
+      {!isOpen && (
+          <SheetTrigger asChild>
+            <Button className="fixed bottom-6 right-6 h-16 w-16 rounded-full shadow-lg" size="icon">
+              <Bot className="h-8 w-8" />
+            </Button>
+          </SheetTrigger>
+      )}
       <SheetContent className="w-full sm:w-[500px] sm:max-w-none flex flex-col p-0">
         <SheetHeader className="p-4 border-b">
           <SheetTitle className="flex items-center gap-2">
