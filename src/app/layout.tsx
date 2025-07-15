@@ -32,12 +32,12 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased bg-background text-foreground">
         <ThemeProvider>
+          <div className="relative z-10">
             <div id="stars"></div>
             <div id="stars2"></div>
             <div id="stars3"></div>
-            <div className="relative z-10">
-                {children}
-            </div>
+            {children}
+          </div>
           <Toaster />
           <AIChat />
         </ThemeProvider>
