@@ -16,9 +16,10 @@ export function Header() {
   useEffect(() => {
     setIsClient(true);
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -26,7 +27,7 @@ export function Header() {
     <>
       {navLinks.map((link) => (
         <Button key={link.name} variant="ghost" asChild>
-          <Link href={link.href}>{link.name}</Link>
+          <Link href={link.href} className="text-muted-foreground hover:text-foreground transition-colors">{link.name}</Link>
         </Button>
       ))}
     </>
@@ -39,10 +40,10 @@ export function Header() {
     )}>
       <div className="container flex h-20 items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <span className="text-xl font-bold font-headline">Prabhat Kumar</span>
+          <span className="text-xl font-bold">Prabhat Kumar</span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-2">
+        <nav className="hidden md:flex items-center gap-1">
           {navItems}
         </nav>
 
@@ -52,7 +53,7 @@ export function Header() {
                 {socialLinks.slice(0, 2).map((link) => (
                     <Button key={link.name} variant="ghost" size="icon" asChild>
                     <a href={link.url} target="_blank" rel="noopener noreferrer" aria-label={link.name}>
-                        <link.icon className="h-5 w-5" />
+                        <link.icon className="h-5 w-5 text-muted-foreground hover:text-foreground transition-colors" />
                     </a>
                     </Button>
                 ))}

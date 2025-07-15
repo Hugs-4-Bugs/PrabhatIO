@@ -42,17 +42,17 @@ export function AboutSection() {
   return (
     <section id="about" className="bg-secondary/50">
       <div className="container">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-headline font-bold">About Me</h2>
-          <p className="text-lg text-muted-foreground mt-2">A glimpse into my journey and passions.</p>
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tighter">About Me</h2>
+          <p className="text-lg text-muted-foreground mt-3 max-w-2xl mx-auto">A glimpse into my journey, passions, and professional background.</p>
         </div>
 
         <div className="grid lg:grid-cols-5 gap-12 items-start">
           <div className="lg:col-span-3">
             <Card className="glassmorphism">
               <CardHeader>
-                <div className="flex justify-between items-center">
-                   <CardTitle className="flex items-center gap-2"><User /> Biography</CardTitle>
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                   <CardTitle className="flex items-center gap-3"><User className="text-primary"/> Biography</CardTitle>
                    <div className="flex items-center gap-2">
                      <Button size="sm" variant="outline" onClick={toggleTone} disabled={isLoading}>
                        <Sparkles className="mr-2 h-4 w-4" />
@@ -63,7 +63,7 @@ export function AboutSection() {
               </CardHeader>
               <CardContent>
                 {isLoading ? (
-                  <div className="space-y-2">
+                  <div className="space-y-3">
                     <Skeleton className="h-4 w-full" />
                     <Skeleton className="h-4 w-full" />
                     <Skeleton className="h-4 w-3/4" />
@@ -71,7 +71,7 @@ export function AboutSection() {
                 ) : (
                   <p className="text-muted-foreground leading-relaxed">{summary}</p>
                 )}
-                <Button variant="link" onClick={toggleExpansion} className="px-0 mt-2">
+                <Button variant="link" onClick={toggleExpansion} className="px-0 mt-2 text-primary">
                   {isExpanded ? 'Show Less' : 'Read More...'}
                 </Button>
               </CardContent>
@@ -79,17 +79,17 @@ export function AboutSection() {
 
             <Card className="mt-8 glassmorphism">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2"><GraduationCap /> Education</CardTitle>
+                <CardTitle className="flex items-center gap-3"><GraduationCap  className="text-primary" /> Education</CardTitle>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-4">
+                <ul className="space-y-6">
                   {education.map((edu, index) => (
                     <li key={index} className="flex items-start gap-4">
-                      <div className="p-2 bg-primary/10 rounded-full">
-                        <edu.icon className="h-6 w-6 text-primary" />
+                      <div className="p-2 bg-primary/10 rounded-full mt-1">
+                        <edu.icon className="h-5 w-5 text-primary" />
                       </div>
                       <div>
-                        <h3 className="font-semibold">{edu.institution}</h3>
+                        <h3 className="font-semibold text-base">{edu.institution}</h3>
                         <p className="text-sm text-muted-foreground">{edu.degree}</p>
                         <p className="text-sm text-muted-foreground">{edu.period}</p>
                       </div>
@@ -101,9 +101,9 @@ export function AboutSection() {
           </div>
           
           <div className="lg:col-span-2">
-             <Card className="glassmorphism">
+             <Card className="glassmorphism sticky top-24">
                 <CardHeader>
-                    <CardTitle className="flex items-center gap-2"><Book /> Author of The Inner Battle</CardTitle>
+                    <CardTitle className="flex items-center gap-3"><Book className="text-primary"/> Author of The Inner Battle</CardTitle>
                 </CardHeader>
                 <CardContent className="text-center">
                     <Image 

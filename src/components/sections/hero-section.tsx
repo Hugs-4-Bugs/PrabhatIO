@@ -34,7 +34,7 @@ export function HeroSection() {
       }
     };
 
-    const typingTimeout = setTimeout(handleTyping, isDeleting ? 100 : 150);
+    const typingTimeout = setTimeout(handleTyping, isDeleting ? 75 : 120);
     return () => clearTimeout(typingTimeout);
   }, [charIndex, isDeleting, currentTitleIndex]);
 
@@ -42,17 +42,17 @@ export function HeroSection() {
     <section id="home" className="relative overflow-hidden bg-background">
       <div className="container grid md:grid-cols-2 gap-12 items-center min-h-[calc(100vh-5rem)] py-20">
         <div className="flex flex-col items-center md:items-start text-center md:text-left animate-fade-in">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-headline font-bold tracking-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tighter">
             Prabhat Kumar
-            <span className="block text-gradient mt-2 min-h-[4rem] md:min-h-[5rem] lg:min-h-[6rem]">
+            <span className="block text-gradient mt-2 min-h-[4rem] md:min-h-[5rem] lg:min-h-[7rem]">
               {displayedTitle}
-              <span className="animate-pulse">|</span>
+              <span className="opacity-50">|</span>
             </span>
           </h1>
           <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-xl">
             Merging Intelligence with Innovation.
           </p>
-          <div className="mt-8 flex flex-wrap gap-4 justify-center md:justify-start">
+          <div className="mt-10 flex flex-wrap gap-4 justify-center md:justify-start">
             <Button size="lg" asChild>
               <Link href="#projects">
                 View Projects <ArrowRight className="ml-2 h-5 w-5" />
@@ -60,13 +60,13 @@ export function HeroSection() {
             </Button>
             <Button size="lg" variant="outline" asChild>
               <Link href="#contact">
-                Chat with Me <MessageSquare className="ml-2 h-5 w-5" />
+                Get in Touch
               </Link>
             </Button>
           </div>
         </div>
         <div className="relative w-full max-w-sm md:max-w-md lg:max-w-lg mx-auto animate-fade-in [animation-delay:200ms]">
-          <div className="absolute inset-0 bg-primary/20 rounded-full blur-3xl animate-hero-glow"></div>
+          <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-primary/5 rounded-full blur-3xl animate-hero-glow"></div>
           <Image
             src="https://placehold.co/600x600.png"
             alt="Prabhat Kumar"

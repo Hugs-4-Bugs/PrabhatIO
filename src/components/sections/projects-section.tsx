@@ -20,12 +20,13 @@ function ProjectExplanation({ projectName, projectDescription }: { projectName: 
 
   const handleExplanation = async () => {
     setIsLoading(true);
+    setExplanation('');
     try {
       const result = await projectExplanation({ projectName, projectDescription });
       setExplanation(result.explanation);
     } catch (error) {
       console.error('Failed to explain project:', error);
-      setExplanation('Could not load explanation at this time.');
+      setExplanation('Could not load explanation at this time. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -43,7 +44,7 @@ function ProjectExplanation({ projectName, projectDescription }: { projectName: 
             An AI-generated overview of the project's technology and challenges.
           </DialogDescription>
         </DialogHeader>
-        <div className="py-4">
+        <div className="py-4 min-h-[120px]">
           {isLoading ? (
             <div className="space-y-2">
               <Skeleton className="h-4 w-full" />
@@ -69,8 +70,8 @@ function ProjectCard({ project, index }: { project: typeof projects[0], index: n
     const { left, top, width, height } = cardRef.current.getBoundingClientRect();
     const x = e.clientX - left - width / 2;
     const y = e.clientY - top - height / 2;
-    const rotateY = (x / width) * 20;
-    const rotateX = (-y / height) * 20;
+    const rotateY = (x / (width / 2)) * 10;
+    const rotateX = (-y / (height / 2)) * 10;
     cardRef.current.style.setProperty('--rotate-x', `${rotateX}deg`);
     cardRef.current.style.setProperty('--rotate-y', `${rotateY}deg`);
   };
@@ -86,31 +87,30 @@ function ProjectCard({ project, index }: { project: typeof projects[0], index: n
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="p-1 perspective-card animate-fade-in"
-      style={{ animationDelay: `${index * 150}ms`}}
+      className="p-1 perspective-card"
     >
-      <Card className="h-full overflow-hidden group">
+      <Card className="h-full overflow-hidden group transition-all duration-300 ease-out hover:shadow-2xl hover:shadow-primary/10">
         <CardContent className="p-0 flex flex-col h-full">
-          <div className="relative h-52">
+          <div className="relative h-52 overflow-hidden">
             <Image
               src={project.image}
               alt={project.name}
               fill
-              className="object-cover group-hover:scale-105 transition-transform duration-500"
+              className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
               data-ai-hint={project.imageAiHint}
             />
-             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
           </div>
 
-          <div className="p-6 flex flex-col flex-grow">
-            <h3 className="text-xl font-bold font-headline">{project.name}</h3>
-            <p className="text-muted-foreground mt-2 flex-grow">{project.description}</p>
+          <div className="p-6 flex flex-col flex-grow bg-card">
+            <h3 className="text-xl font-bold">{project.name}</h3>
+            <p className="text-muted-foreground mt-2 flex-grow text-sm leading-relaxed">{project.description}</p>
             
             <div className="flex flex-wrap gap-2 my-4">
                 {project.tags.map(tag => <Badge key={tag} variant="secondary">{tag}</Badge>)}
             </div>
 
-            <div className="flex flex-wrap gap-2 items-center mt-auto">
+            <div className="flex flex-wrap gap-2 items-center mt-auto pt-4 border-t border-border/50">
                 <Button asChild size="sm">
                     <a href={project.link} target="_blank" rel="noopener noreferrer">
                     <Code className="mr-2 h-4 w-4" /> View Code
@@ -129,16 +129,21 @@ export function ProjectsSection() {
   return (
     <section id="projects" className="bg-secondary/50">
       <div className="container">
-        <div className="text-center mb-12 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-headline font-bold">My Projects</h2>
-          <p className="text-lg text-muted-foreground mt-2">A selection of my work. Hover for a 3D effect.</p>
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tighter">My Projects</h2>
+          <p className="text-lg text-muted-foreground mt-3 max-w-2xl mx-auto">A selection of my work. Hover for a subtle 3D effect.</p>
         </div>
         
-        <Carousel opts={{ align: "start", loop: true, }} className="w-full">
+        <Carousel 
+          opts={{ align: "start", loop: true }} 
+          className="w-full max-w-6xl mx-auto"
+        >
           <CarouselContent>
             {projects.map((project, index) => (
               <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                <ProjectCard project={project} index={index} />
+                <div className="p-2">
+                  <ProjectCard project={project} index={index} />
+                </div>
               </CarouselItem>
             ))}
           </CarouselContent>
