@@ -8,6 +8,7 @@ import { Button } from '../ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet';
 import { Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Logo } from '../logo';
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -40,7 +41,7 @@ export function Header() {
     )}>
       <div className="container flex h-20 items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <span className="text-xl font-bold tracking-wider text-gradient">PK</span>
+          <Logo />
         </Link>
 
         <nav className="hidden md:flex items-center gap-1">
