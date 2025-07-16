@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, MouseEvent } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -15,6 +15,8 @@ export function HeroSection() {
   const [displayedTitle, setDisplayedTitle] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [charIndex, setCharIndex] = useState(0);
+  const imageRef = useRef<HTMLDivElement>(null);
+
 
   useEffect(() => {
     const handleTyping = () => {
@@ -38,6 +40,26 @@ export function HeroSection() {
     const typingTimeout = setTimeout(handleTyping, isDeleting ? 75 : 120);
     return () => clearTimeout(typingTimeout);
   }, [charIndex, isDeleting, currentTitleIndex]);
+  
+  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+    if (!imageRef.current) return;
+    const { left, top, width, height } = imageRef.current.getBoundingClientRect();
+    const x = e.clientX - left - width / 2;
+    const y = e.clientY - top - height / 2;
+    const rotateY = (x / (width / 2)) * 15; // Increased rotation for more effect
+    const rotateX = (-y / (height / 2)) * 15;
+    imageRef.current.style.setProperty('--rotate-x', `${rotateX}deg`);
+    imageRef.current.style.setProperty('--rotate-y', `${rotateY}deg`);
+    imageRef.current.style.transform = `perspective(1200px) rotateY(${rotateY}deg) rotateX(${rotateX}deg) scale3d(1.05, 1.05, 1.05)`;
+  };
+
+  const handleMouseLeave = () => {
+    if (!imageRef.current) return;
+    imageRef.current.style.setProperty('--rotate-x', '0deg');
+    imageRef.current.style.setProperty('--rotate-y', '0deg');
+    imageRef.current.style.transform = `perspective(1200px) rotateY(0) rotateX(0) scale3d(1, 1, 1)`;
+  };
+
 
   return (
     <section id="home" className="relative overflow-hidden">
@@ -72,16 +94,21 @@ export function HeroSection() {
             </Button>
           </div>
         </div>
-        <div className="relative w-full max-w-sm md:max-w-md lg:max-w-lg mx-auto animate-fade-in [animation-delay:200ms]">
-          <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-3xl animate-hero-glow"></div>
+        <div 
+          ref={imageRef}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+          className="relative w-full max-w-sm md:max-w-md lg:max-w-lg mx-auto animate-fade-in [animation-delay:200ms] transition-transform duration-300 ease-out"
+          style={{ transformStyle: 'preserve-3d' }}
+        >
+          <div className="absolute -inset-8 bg-gradient-to-r from-primary to-accent rounded-full animate-hero-glow"></div>
           <Image
-            src="https://placehold.co/600x600.png"
-            alt="Prabhat Kumar - QuantumFusion Solutions"
+            src="/images/prabhat-hero.png"
+            alt="Prabhat Kumar"
             width={600}
             height={600}
             priority
-            className="rounded-full object-cover z-10 relative border-8 border-background/50 shadow-2xl"
-            data-ai-hint="abstract technology"
+            className="rounded-full object-contain z-10 relative shadow-2xl"
           />
         </div>
       </div>
