@@ -50,39 +50,160 @@ export const socialLinks = [
 ];
 
 export const projects = [
+
     {
-      name: 'Trade-Pros-Front-End',
-      description: 'The frontend of a trading platform built with React, focusing on real-time data visualization and user-friendly interface design. It integrates with various APIs to provide live market data, charting tools, and portfolio management features.',
-      tags: ['React', 'JavaScript', 'HTML5', 'CSS3', 'REST API'],
-      link: 'https://github.com/PRABHAT-72/Trade-Pros-Front-End',
+      name: 'Cryptocurrency Price Prediction',
+      description: 'A machine learning-based app that predicts Bitcoin prices using historical data. Demonstrates data preprocessing, model training, and performance evaluation in a real-world finance use case.',
+      tags: ['Python', 'Machine Learning', 'Pandas', 'Matplotlib'],
+      link: 'https://github.com/Hugs-4-Bugs/Cryptocurrency-Price-prediction-using-ML',
       image: 'https://placehold.co/600x400.png',
-      imageAiHint: 'trading platform interface'
+      imageAiHint: 'cryptocurrency prediction graph'
     },
     {
-      name: 'Weather-App',
-      description: 'A clean and simple weather application that provides current weather conditions and forecasts. Built with modern web technologies, it features a search function for different locations and a responsive design for both desktop and mobile devices.',
-      tags: ['React', 'API', 'JavaScript'],
-      link: 'https://github.com/PRABHAT-72/Weather-App',
+      name: 'REST API CRUD Operation',
+      description: 'A Spring Boot application implementing full CRUD functionality using RESTful APIs. Features Hibernate, JSP, and MySQL integration for robust backend operations.',
+      tags: ['Spring Boot', 'Hibernate', 'MySQL', 'JSP'],
+      link: 'https://github.com/Hugs-4-Bugs/REST-API-CRUD-Operation',
       image: 'https://placehold.co/600x400.png',
-      imageAiHint: 'weather forecast app'
+      imageAiHint: 'rest api crud operation backend'
     },
     {
-      name: 'Blog-Website',
-      description: 'A full-stack blog platform featuring user authentication, post creation, and comment sections. The backend is built with Spring Boot, providing a robust and secure API, while the frontend offers a clean and engaging reading experience.',
-      tags: ['Spring Boot', 'React', 'MySQL'],
-      link: 'https://github.com/PRABHAT-72/Blog-Website',
+      name: 'Flight Reservation System',
+      description: 'A full-featured airline booking platform using Spring Boot and AngularJS. Supports flight search, booking, and check-in with secure authentication and role-based access.',
+      tags: ['Spring Boot', 'AngularJS', 'Thymeleaf', 'MySQL'],
+      link: 'https://github.com/Hugs-4-Bugs/Flight_Reservation_Project',
       image: 'https://placehold.co/600x400.png',
-      imageAiHint: 'modern blog design'
+      imageAiHint: 'flight booking interface'
     },
     {
-        name: 'The-Inner-Battle',
-        description: 'The official landing page for my book, "The Inner Battle". This project is a simple, elegant static site built with HTML and CSS to provide information about the book, author details, and purchase links. The design focuses on readability and a professional author portfolio feel.',
-        tags: ['HTML', 'CSS', 'JavaScript'],
-        link: 'https://github.com/PRABHAT-72/The-Inner-Battle',
-        image: 'https://placehold.co/600x400.png',
-        imageAiHint: 'book author website'
+      name: 'Blog Application (Spring Boot)',
+      description: 'A secure blog platform supporting JWT authentication, CRUD operations, and Postman testing. Built with Spring Boot and MySQL for backend robustness.',
+      tags: ['Spring Boot', 'JWT', 'MySQL', 'Postman'],
+      link: 'https://github.com/Hugs-4-Bugs/Blog_Application-SpringBoot-Project',
+      image: 'https://placehold.co/600x400.png',
+      imageAiHint: 'developer blog interface'
     },
-  ];
+    {
+      name: 'Hospital Management System',
+      description: 'A full-stack hospital management app with admin panels, report downloads, and service tracking. Uses Spring Boot, Thymeleaf, and Bootstrap for a responsive UI.',
+      tags: ['Spring Boot', 'Thymeleaf', 'Bootstrap', 'MySQL'],
+      link: 'https://github.com/Hugs-4-Bugs/Hospital-Managment-Application',
+      image: 'https://placehold.co/600x400.png',
+      imageAiHint: 'hospital dashboard interface'
+    },
+    {
+      name: 'Bitcoin Mining Application',
+      description: 'Spring Boot project simulating Bitcoin mining operations with account management, transactions, and audit logging. Integrates BitcoinJ and REST APIs.',
+      tags: ['Spring Boot', 'BitcoinJ', 'MySQL', 'REST API'],
+      link: 'https://github.com/Hugs-4-Bugs/Bitcoin-Mining-App',
+      image: 'https://placehold.co/600x400.png',
+      imageAiHint: 'bitcoin mining dashboard'
+    },
+    {
+      name: 'Multi File Upload System',
+      description: 'Spring Boot REST API for uploading multiple files to the database using Spring Data JPA. Supports multipart handling and easy integration.',
+      tags: ['Spring Boot', 'REST API', 'File Upload'],
+      link: 'https://github.com/Hugs-4-Bugs/MultiFileUpload-Using-Spring-Boot-Application',
+      image: 'https://placehold.co/600x400.png',
+      imageAiHint: 'file upload ui'
+    },
+    {
+      name: 'QR Code Generator',
+      description: 'Java-based QR code generator that accepts text input and outputs custom QR codes. Includes REST endpoints and Postman test support.',
+      tags: ['Java', 'QR Code', 'Spring Boot'],
+      link: 'https://github.com/Hugs-4-Bugs/QR-code-Generator',
+      image: 'https://placehold.co/600x400.png',
+      imageAiHint: 'qr code generator'
+    },
+    {
+      name: 'Awesome Portfolio Collection',
+      description: 'A curated collection of 100+ portfolio templates built using HTML, CSS, and JavaScript. Ideal for design inspiration and development practice.',
+      tags: ['HTML', 'CSS', 'JavaScript', 'UI Design'],
+      link: 'https://github.com/Hugs-4-Bugs/Awesome-Portfolio-Collection',
+      image: 'https://placehold.co/600x400.png',
+      imageAiHint: 'web developer portfolio gallery'
+    },
+    {
+      name: 'GitHub Streak Back',
+      description: 'Automates contributions to restore broken GitHub streaks using Node.js and Git. Ideal for devs who missed a commit.',
+      tags: ['Node.js', 'Automation', 'Git'],
+      link: 'https://github.com/Hugs-4-Bugs/github-streak-back.git',
+      image: 'https://placehold.co/600x400.png',
+      imageAiHint: 'github contribution graph automation'
+    },
+    {
+      name: 'AlgoByPrabhat',
+      description: 'A learning platform for DSA concepts with visualizations. Helps learners understand algorithms via interactive examples.',
+      tags: ['JavaScript', 'Algorithms', 'Data Structures'],
+      link: 'https://github.com/Hugs-4-Bugs/AlgoByPrabhat.git',
+      image: 'https://placehold.co/600x400.png',
+      imageAiHint: 'algorithm visualizer interface'
+    },
+    {
+      name: 'Sharma AI Assistant',
+      description: 'Voice-activated desktop assistant built with JavaScript and Node.js. Uses AppleScript to automate OS-level tasks.',
+      tags: ['JavaScript', 'Voice Control', 'Node.js'],
+      link: 'https://github.com/Hugs-4-Bugs/Sharma-AI.git',
+      image: 'https://placehold.co/600x400.png',
+      imageAiHint: 'voice assistant interface'
+    },
+    {
+      name: 'User Details App',
+      description: 'Spring Boot app for managing user data with REST API. Supports CRUD operations and MySQL integration.',
+      tags: ['Spring Boot', 'MySQL', 'REST API'],
+      link: 'https://github.com/Hugs-4-Bugs/user-details-app.git',
+      image: 'https://placehold.co/600x400.png',
+      imageAiHint: 'user profile management'
+    },
+    {
+      name: 'SpringBoot OpenAI Integration',
+      description: 'Integrates OpenAI into a Spring Boot backend to enable AI-powered text generation, response crafting, and content creation.',
+      tags: ['Spring Boot', 'OpenAI', 'REST API'],
+      link: 'https://github.com/Hugs-4-Bugs/SpringBoot-OpenAI',
+      image: 'https://placehold.co/600x400.png',
+      imageAiHint: 'ai integration spring boot'
+    },
+    {
+      name: 'Mobile Banking App',
+      description: 'Spring Boot application providing mobile banking services like transactions, fund transfers, and account management.',
+      tags: ['Spring Boot', 'Banking', 'MySQL'],
+      link: 'https://github.com/Hugs-4-Bugs/Sharma-AI.git',
+      image: 'https://placehold.co/600x400.png',
+      imageAiHint: 'mobile banking interface'
+    },
+    {
+      name: 'Uber Application',
+      description: 'A ride-hailing platform with real-time ride tracking, driver management, and fare estimation. Built with Spring Boot.',
+      tags: ['Spring Boot', 'Maps API', 'E-commerce'],
+      link: 'https://github.com/Hugs-4-Bugs/Uber-Application.git',
+      image: 'https://placehold.co/600x400.png',
+      imageAiHint: 'uber clone interface'
+    },
+    {
+      name: 'Cafe Management System',
+      description: 'Spring Boot-based system for handling cafe operations like order processing, billing, and menu updates.',
+      tags: ['Spring Boot', 'Cafe App', 'MySQL'],
+      link: 'https://github.com/Hugs-4-Bugs/Cafe-Management-System.git',
+      image: 'https://placehold.co/600x400.png',
+      imageAiHint: 'cafe billing interface'
+    },
+    {
+      name: 'Ollama AI + Spring Boot',
+      description: 'Spring Boot integration with Ollama AI using Spring AI and Flux to deliver both synchronous and streaming AI responses.',
+      tags: ['Spring Boot', 'Ollama', 'Spring AI', 'LLMs'],
+      link: 'https://github.com/Hugs-4-Bugs/Ollama-Spring-Boot-AI-Implementation.git',
+      image: 'https://placehold.co/600x400.png',
+      imageAiHint: 'spring ai ollama chatbot'
+    },
+    {
+      name: 'LinkedIn Clone Application',
+      description: 'A microservice-based LinkedIn clone with features like connections, posts, notifications, and user profiles.',
+      tags: ['Spring Boot', 'Microservices', 'API Gateway', 'Eureka'],
+      link: 'https://github.com/Hugs-4-Bugs/LinkedIn-Application.git',
+      image: 'https://placehold.co/600x400.png',
+      imageAiHint: 'linkedin clone ui'
+    }
+  ];  
   
 export const skillCategories: { name: string; icon: Icon; skills: { name: string; icon: Icon }[] }[] = [
   { 

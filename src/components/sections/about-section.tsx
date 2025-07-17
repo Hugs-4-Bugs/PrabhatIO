@@ -118,7 +118,7 @@ export function AboutSection() {
                 </CardHeader>
                 <CardContent className="text-center">
                     <Image 
-                        src="https://placehold.co/400x600.png"
+                        src="/images/the-inner-battle.jpg"
                         alt="The Inner Battle Book Cover"
                         width={400}
                         height={600}
