@@ -103,7 +103,7 @@ export function HeroSection() {
         >
           <div className="absolute -inset-8 bg-gradient-to-r from-primary to-accent rounded-full animate-hero-glow"></div>
           <Image
-            src="/images/prabhat.png"
+            src="/images/prabhat.jpg"
             alt="Prabhat Kumar"
             width={600}
             height={600}

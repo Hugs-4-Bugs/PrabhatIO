@@ -56,7 +56,7 @@ export const projects = [
       description: 'A machine learning-based app that predicts Bitcoin prices using historical data. Demonstrates data preprocessing, model training, and performance evaluation in a real-world finance use case.',
       tags: ['Python', 'Machine Learning', 'Pandas', 'Matplotlib'],
       link: 'https://github.com/Hugs-4-Bugs/Cryptocurrency-Price-prediction-using-ML',
-      image: 'https://placehold.co/600x400.png',
+      image: '/images/prabhat.jpg',
       imageAiHint: 'cryptocurrency prediction graph'
     },
     {
@@ -64,7 +64,7 @@ export const projects = [
       description: 'A Spring Boot application implementing full CRUD functionality using RESTful APIs. Features Hibernate, JSP, and MySQL integration for robust backend operations.',
       tags: ['Spring Boot', 'Hibernate', 'MySQL', 'JSP'],
       link: 'https://github.com/Hugs-4-Bugs/REST-API-CRUD-Operation',
-      image: 'https://placehold.co/600x400.png',
+      image: '/images/prabhat.jpg',
       imageAiHint: 'rest api crud operation backend'
     },
     {
@@ -72,7 +72,7 @@ export const projects = [
       description: 'A full-featured airline booking platform using Spring Boot and AngularJS. Supports flight search, booking, and check-in with secure authentication and role-based access.',
       tags: ['Spring Boot', 'AngularJS', 'Thymeleaf', 'MySQL'],
       link: 'https://github.com/Hugs-4-Bugs/Flight_Reservation_Project',
-      image: 'https://placehold.co/600x400.png',
+      image: '/images/prabhat.jpg',
       imageAiHint: 'flight booking interface'
     },
     {
@@ -80,7 +80,7 @@ export const projects = [
       description: 'A secure blog platform supporting JWT authentication, CRUD operations, and Postman testing. Built with Spring Boot and MySQL for backend robustness.',
       tags: ['Spring Boot', 'JWT', 'MySQL', 'Postman'],
       link: 'https://github.com/Hugs-4-Bugs/Blog_Application-SpringBoot-Project',
-      image: 'https://placehold.co/600x400.png',
+      image: '/images/prabhat.jpg',
       imageAiHint: 'developer blog interface'
     },
     {
@@ -88,7 +88,7 @@ export const projects = [
       description: 'A full-stack hospital management app with admin panels, report downloads, and service tracking. Uses Spring Boot, Thymeleaf, and Bootstrap for a responsive UI.',
       tags: ['Spring Boot', 'Thymeleaf', 'Bootstrap', 'MySQL'],
       link: 'https://github.com/Hugs-4-Bugs/Hospital-Managment-Application',
-      image: 'https://placehold.co/600x400.png',
+      image: '/images/prabhat.jpg',
       imageAiHint: 'hospital dashboard interface'
     },
     {
@@ -96,7 +96,7 @@ export const projects = [
       description: 'Spring Boot project simulating Bitcoin mining operations with account management, transactions, and audit logging. Integrates BitcoinJ and REST APIs.',
       tags: ['Spring Boot', 'BitcoinJ', 'MySQL', 'REST API'],
       link: 'https://github.com/Hugs-4-Bugs/Bitcoin-Mining-App',
-      image: 'https://placehold.co/600x400.png',
+      image: '/images/prabhat.jpg',
       imageAiHint: 'bitcoin mining dashboard'
     },
     {
@@ -104,7 +104,7 @@ export const projects = [
       description: 'Spring Boot REST API for uploading multiple files to the database using Spring Data JPA. Supports multipart handling and easy integration.',
       tags: ['Spring Boot', 'REST API', 'File Upload'],
       link: 'https://github.com/Hugs-4-Bugs/MultiFileUpload-Using-Spring-Boot-Application',
-      image: 'https://placehold.co/600x400.png',
+      image: '/images/prabhat.jpg',
       imageAiHint: 'file upload ui'
     },
     {
@@ -112,7 +112,7 @@ export const projects = [
       description: 'Java-based QR code generator that accepts text input and outputs custom QR codes. Includes REST endpoints and Postman test support.',
       tags: ['Java', 'QR Code', 'Spring Boot'],
       link: 'https://github.com/Hugs-4-Bugs/QR-code-Generator',
-      image: 'https://placehold.co/600x400.png',
+      image: '/images/prabhat.jpg',
       imageAiHint: 'qr code generator'
     },
     {
@@ -120,7 +120,7 @@ export const projects = [
       description: 'A curated collection of 100+ portfolio templates built using HTML, CSS, and JavaScript. Ideal for design inspiration and development practice.',
       tags: ['HTML', 'CSS', 'JavaScript', 'UI Design'],
       link: 'https://github.com/Hugs-4-Bugs/Awesome-Portfolio-Collection',
-      image: 'https://placehold.co/600x400.png',
+      image: '/images/prabhat.jpg',
       imageAiHint: 'web developer portfolio gallery'
     },
     {
@@ -128,7 +128,7 @@ export const projects = [
       description: 'Automates contributions to restore broken GitHub streaks using Node.js and Git. Ideal for devs who missed a commit.',
       tags: ['Node.js', 'Automation', 'Git'],
       link: 'https://github.com/Hugs-4-Bugs/github-streak-back.git',
-      image: 'https://placehold.co/600x400.png',
+      image: '/images/prabhat.jpg',
       imageAiHint: 'github contribution graph automation'
     },
     {
@@ -136,7 +136,7 @@ export const projects = [
       description: 'A learning platform for DSA concepts with visualizations. Helps learners understand algorithms via interactive examples.',
       tags: ['JavaScript', 'Algorithms', 'Data Structures'],
       link: 'https://github.com/Hugs-4-Bugs/AlgoByPrabhat.git',
-      image: 'https://placehold.co/600x400.png',
+      image: '/images/prabhat.jpg',
       imageAiHint: 'algorithm visualizer interface'
     },
     {
@@ -144,7 +144,7 @@ export const projects = [
       description: 'Voice-activated desktop assistant built with JavaScript and Node.js. Uses AppleScript to automate OS-level tasks.',
       tags: ['JavaScript', 'Voice Control', 'Node.js'],
       link: 'https://github.com/Hugs-4-Bugs/Sharma-AI.git',
-      image: 'https://placehold.co/600x400.png',
+      image: '/images/prabhat.jpg',
       imageAiHint: 'voice assistant interface'
     },
     {
@@ -152,7 +152,7 @@ export const projects = [
       description: 'Spring Boot app for managing user data with REST API. Supports CRUD operations and MySQL integration.',
       tags: ['Spring Boot', 'MySQL', 'REST API'],
       link: 'https://github.com/Hugs-4-Bugs/user-details-app.git',
-      image: 'https://placehold.co/600x400.png',
+      image: '/images/prabhat.jpg',
       imageAiHint: 'user profile management'
     },
     {
@@ -160,7 +160,7 @@ export const projects = [
       description: 'Integrates OpenAI into a Spring Boot backend to enable AI-powered text generation, response crafting, and content creation.',
       tags: ['Spring Boot', 'OpenAI', 'REST API'],
       link: 'https://github.com/Hugs-4-Bugs/SpringBoot-OpenAI',
-      image: 'https://placehold.co/600x400.png',
+      image: '/images/prabhat.jpg',
       imageAiHint: 'ai integration spring boot'
     },
     {
@@ -168,7 +168,7 @@ export const projects = [
       description: 'Spring Boot application providing mobile banking services like transactions, fund transfers, and account management.',
       tags: ['Spring Boot', 'Banking', 'MySQL'],
       link: 'https://github.com/Hugs-4-Bugs/Sharma-AI.git',
-      image: 'https://placehold.co/600x400.png',
+      image: '/images/prabhat.jpg',
       imageAiHint: 'mobile banking interface'
     },
     {
@@ -176,7 +176,7 @@ export const projects = [
       description: 'A ride-hailing platform with real-time ride tracking, driver management, and fare estimation. Built with Spring Boot.',
       tags: ['Spring Boot', 'Maps API', 'E-commerce'],
       link: 'https://github.com/Hugs-4-Bugs/Uber-Application.git',
-      image: 'https://placehold.co/600x400.png',
+      image: '/images/prabhat.jpg',
       imageAiHint: 'uber clone interface'
     },
     {
@@ -184,7 +184,7 @@ export const projects = [
       description: 'Spring Boot-based system for handling cafe operations like order processing, billing, and menu updates.',
       tags: ['Spring Boot', 'Cafe App', 'MySQL'],
       link: 'https://github.com/Hugs-4-Bugs/Cafe-Management-System.git',
-      image: 'https://placehold.co/600x400.png',
+      image: '/images/prabhat.jpg',
       imageAiHint: 'cafe billing interface'
     },
     {
@@ -192,7 +192,7 @@ export const projects = [
       description: 'Spring Boot integration with Ollama AI using Spring AI and Flux to deliver both synchronous and streaming AI responses.',
       tags: ['Spring Boot', 'Ollama', 'Spring AI', 'LLMs'],
       link: 'https://github.com/Hugs-4-Bugs/Ollama-Spring-Boot-AI-Implementation.git',
-      image: 'https://placehold.co/600x400.png',
+      image: '/images/prabhat.jpg',
       imageAiHint: 'spring ai ollama chatbot'
     },
     {
@@ -200,7 +200,7 @@ export const projects = [
       description: 'A microservice-based LinkedIn clone with features like connections, posts, notifications, and user profiles.',
       tags: ['Spring Boot', 'Microservices', 'API Gateway', 'Eureka'],
       link: 'https://github.com/Hugs-4-Bugs/LinkedIn-Application.git',
-      image: 'https://placehold.co/600x400.png',
+      image: '/images/prabhat.jpg',
       imageAiHint: 'linkedin clone ui'
     }
   ];  
