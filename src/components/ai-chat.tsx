@@ -82,7 +82,7 @@ export default function AIChat() {
   const [isListening, setIsListening] = useState(false);
   
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const scrollAreaRef = useRef<HTMLDivElement>(null);
+  const scrollViewportRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<any>(null);
   const { toast } = useToast();
   
@@ -92,8 +92,8 @@ export default function AIChat() {
   });
 
   useEffect(() => {
-    if (scrollAreaRef.current) {
-      scrollAreaRef.current.scrollTo({ top: scrollAreaRef.current.scrollHeight, behavior: 'smooth' });
+    if (scrollViewportRef.current) {
+      scrollViewportRef.current.scrollTo({ top: scrollViewportRef.current.scrollHeight, behavior: 'smooth' });
     }
   }, [messages]);
 
@@ -247,7 +247,7 @@ export default function AIChat() {
             <Sparkles className="h-6 w-6 text-primary" /> AI Assistant
           </SheetTitle>
         </SheetHeader>
-        <ScrollArea className="flex-1 p-4" ref={scrollAreaRef}>
+        <ScrollArea className="flex-1 p-4" viewportRef={scrollViewportRef}>
           <div className="space-y-4">
             {messages.map(msg => (
               <div key={msg.id} className={cn("flex items-start gap-3", msg.role === 'user' ? 'justify-end' : 'justify-start')}>
