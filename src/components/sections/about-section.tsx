@@ -5,59 +5,73 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { userDetails, education } from '@/lib/data';
+import { userDetails, education, bookData, bookChapters } from '@/lib/data';
 import { generateAboutMe } from '@/ai/flows/dynamic-about-me';
 import { summarizeBook } from '@/ai/flows/book-summary';
-import { Book, GraduationCap, Loader2, Sparkles, User } from 'lucide-react';
+import { Book, GraduationCap, Loader2, Sparkles, User, BookOpenCheck } from 'lucide-react';
 import { Skeleton } from '../ui/skeleton';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '../ui/dialog';
 import { ScrollArea } from '../ui/scroll-area';
-import { bookData } from '@/lib/data';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { summarizeChapter } from '@/ai/flows/chapter-summary';
 
-function BookSummaryDialog() {
-  const [summary, setSummary] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+function ChapterSummaryAccordion() {
+  const [activeChapter, setActiveChapter] = useState<string | null>(null);
+  const [summaries, setSummaries] = useState<Record<string, string>>({});
+  const [loading, setLoading] = useState<string | null>(null);
 
-  const handleGenerateSummary = async () => {
-    if (summary) return; // Don't re-fetch if summary already exists
-    setIsLoading(true);
+  const handleGenerateSummary = async (chapterTitle: string, chapterContent: string) => {
+    if (summaries[chapterTitle]) return; // Already loaded
+
+    setLoading(chapterTitle);
     try {
-      const result = await summarizeBook({ bookContent: bookData });
-      setSummary(result.summary);
+      const result = await summarizeChapter({ chapterTitle, chapterContent });
+      setSummaries(prev => ({ ...prev, [chapterTitle]: result.summary }));
     } catch (error) {
-      console.error('Failed to generate book summary:', error);
-      setSummary('Could not load summary at this time. Please try again later.');
+      console.error('Failed to generate chapter summary:', error);
+      setSummaries(prev => ({ ...prev, [chapterTitle]: 'Could not load summary. Please try again.' }));
     } finally {
-      setIsLoading(false);
+      setLoading(null);
     }
   };
 
   return (
-    <Dialog onOpenChange={(open) => { if (open) handleGenerateSummary(); }}>
+    <Dialog>
       <DialogTrigger asChild>
         <Button>Learn More</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[625px]">
         <DialogHeader>
-          <DialogTitle className="font-headline">AI Summary: The Inner Battle</DialogTitle>
+          <DialogTitle className="font-headline flex items-center gap-2">
+            <BookOpenCheck className="text-primary"/> The Inner Battle: Chapter Summaries
+          </DialogTitle>
           <DialogDescription className="font-body">
-            An AI-generated summary of the book's key themes and chapters.
+            An interactive, AI-powered summary for each chapter. Click a chapter to learn more.
           </DialogDescription>
         </DialogHeader>
-        <div className="py-4 min-h-[200px]">
-          {isLoading ? (
-            <div className="space-y-3">
-              <Skeleton className="h-4 w-full" />
-              <Skeleton className="h-4 w-full" />
-              <Skeleton className="h-4 w-full" />
-              <Skeleton className="h-4 w-4/5" />
-            </div>
-          ) : (
-            <ScrollArea className="h-[300px] pr-4">
-              <p className="text-sm text-muted-foreground whitespace-pre-wrap font-body">{summary}</p>
-            </ScrollArea>
-          )}
-        </div>
+        <ScrollArea className="h-[400px] pr-4 mt-4">
+          <Accordion type="single" collapsible className="w-full">
+            {bookChapters.map((chapter) => (
+              <AccordionItem key={chapter.title} value={chapter.title}>
+                <AccordionTrigger onOpening={() => handleGenerateSummary(chapter.title, chapter.content)}>
+                  {chapter.title}
+                </AccordionTrigger>
+                <AccordionContent>
+                  {loading === chapter.title ? (
+                     <div className="space-y-2 py-2">
+                        <Skeleton className="h-4 w-full" />
+                        <Skeleton className="h-4 w-4/5" />
+                      </div>
+                  ) : (
+                    <p className="text-sm text-muted-foreground whitespace-pre-wrap font-body leading-relaxed">
+                      {summaries[chapter.title]}
+                    </p>
+                  )}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </ScrollArea>
       </DialogContent>
     </Dialog>
   );
@@ -180,7 +194,7 @@ export function AboutSection() {
                         data-ai-hint="book cover"
                     />
                     <p className="text-muted-foreground text-sm mb-4 font-body">A book about personal growth, resilience, and navigating life's challenges.</p>
-                    <BookSummaryDialog />
+                    <ChapterSummaryAccordion />
                 </CardContent>
              </Card>
           </div>
