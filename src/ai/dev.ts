@@ -1,3 +1,4 @@
+
 import { config } from 'dotenv';
 config();
 
@@ -6,3 +7,4 @@ import '@/ai/flows/trading-explanation.ts';
 import '@/ai/flows/schedule-meeting.ts';
 import '@/ai/flows/skill-summary.ts';
 import '@/ai/flows/project-explanation.ts';
+import '@/ai/flows/book-summary.ts';

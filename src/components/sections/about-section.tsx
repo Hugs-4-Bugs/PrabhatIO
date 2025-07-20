@@ -7,8 +7,62 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { userDetails, education } from '@/lib/data';
 import { generateAboutMe } from '@/ai/flows/dynamic-about-me';
-import { Book, GraduationCap, Loader2, Sparkles, User, AudioWaveform } from 'lucide-react';
+import { summarizeBook } from '@/ai/flows/book-summary';
+import { Book, GraduationCap, Loader2, Sparkles, User } from 'lucide-react';
 import { Skeleton } from '../ui/skeleton';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '../ui/dialog';
+import { ScrollArea } from '../ui/scroll-area';
+import { bookData } from '@/lib/data';
+
+function BookSummaryDialog() {
+  const [summary, setSummary] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleGenerateSummary = async () => {
+    if (summary) return; // Don't re-fetch if summary already exists
+    setIsLoading(true);
+    try {
+      const result = await summarizeBook({ bookContent: bookData });
+      setSummary(result.summary);
+    } catch (error) {
+      console.error('Failed to generate book summary:', error);
+      setSummary('Could not load summary at this time. Please try again later.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <Dialog onOpenChange={(open) => { if (open) handleGenerateSummary(); }}>
+      <DialogTrigger asChild>
+        <Button>Learn More</Button>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-[625px]">
+        <DialogHeader>
+          <DialogTitle className="font-headline">AI Summary: The Inner Battle</DialogTitle>
+          <DialogDescription className="font-body">
+            An AI-generated summary of the book's key themes and chapters.
+          </DialogDescription>
+        </DialogHeader>
+        <div className="py-4 min-h-[200px]">
+          {isLoading ? (
+            <div className="space-y-3">
+              <Skeleton className="h-4 w-full" />
+              <Skeleton className="h-4 w-full" />
+              <Skeleton className="h-4 w-full" />
+              <Skeleton className="h-4 w-4/5" />
+            </div>
+          ) : (
+            <ScrollArea className="h-[300px] pr-4">
+              <p className="text-sm text-muted-foreground whitespace-pre-wrap font-body">{summary}</p>
+            </ScrollArea>
+          )}
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
 
 export function AboutSection() {
   const [summary, setSummary] = useState('');
@@ -118,7 +172,7 @@ export function AboutSection() {
                 </CardHeader>
                 <CardContent className="text-center">
                     <Image 
-                        src="/the-inner-battle.jpg"
+                        src="/images/the-inner-battle.jpg"
                         alt="The Inner Battle Book Cover"
                         width={400}
                         height={600}
@@ -126,9 +180,7 @@ export function AboutSection() {
                         data-ai-hint="book cover"
                     />
                     <p className="text-muted-foreground text-sm mb-4 font-body">A book about personal growth, resilience, and navigating life's challenges.</p>
-                    <Button asChild>
-                        <a href="https://github.com/PRABHAT-72/The-Inner-Battle" target="_blank" rel="noopener noreferrer">Learn More</a>
-                    </Button>
+                    <BookSummaryDialog />
                 </CardContent>
              </Card>
           </div>
