@@ -3,13 +3,14 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { navLinks, socialLinks } from '@/lib/data';
+import { navLinks } from '@/lib/data';
 import { ThemeToggle } from '../theme-toggle';
 import { Button } from '../ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet';
 import { Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Logo } from '../logo';
+import { Socials } from '../socials';
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -54,13 +55,7 @@ export function Header() {
         <div className="flex items-center gap-2">
             {isClient && (
                 <div className="hidden md:flex items-center gap-1">
-                {socialLinks.slice(0, 2).map((link) => (
-                    <Button key={link.name} variant="ghost" size="icon" asChild>
-                    <a href={link.url} target="_blank" rel="noopener noreferrer" aria-label={link.name}>
-                        <link.icon className="h-5 w-5 text-muted-foreground hover:text-foreground transition-colors" />
-                    </a>
-                    </Button>
-                ))}
+                  <Socials />
                 </div>
             )}
             <ThemeToggle />
@@ -76,6 +71,9 @@ export function Header() {
                         <nav className="flex flex-col gap-4 mt-8">
                             {navItems}
                         </nav>
+                        <div className="mt-8 flex justify-center">
+                          <Socials />
+                        </div>
                     </SheetContent>
                 </Sheet>
             </div>

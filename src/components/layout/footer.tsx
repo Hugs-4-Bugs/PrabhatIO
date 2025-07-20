@@ -1,5 +1,4 @@
-import { socialLinks } from '@/lib/data';
-import { Button } from '../ui/button';
+import { Socials } from '../socials';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -10,15 +9,7 @@ export function Footer() {
         <p className="text-sm text-muted-foreground">
           &copy; {currentYear} Prabhat Kumar. All rights reserved.
         </p>
-        <div className="flex items-center gap-2">
-          {socialLinks.map((link) => (
-            <Button key={link.name} variant="ghost" size="icon" asChild>
-              <a href={link.url} target="_blank" rel="noopener noreferrer" aria-label={link.name}>
-                <link.icon className="h-5 w-5" />
-              </a>
-            </Button>
-          ))}
-        </div>
+        <Socials />
       </div>
     </footer>
   );

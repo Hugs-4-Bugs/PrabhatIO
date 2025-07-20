@@ -19,13 +19,18 @@ import {
   BookOpen,
   MessageSquare,
   Star,
-  Link,
+  Link as LinkIcon,
   BookUser,
   GitBranch,
   Database,
   Type,
   TrendingUp,
   Cpu,
+  Layers,
+  ListChecks,
+  ListCheck,
+  Monitor,
+  Webhook
 } from 'lucide-react';
 import type { Icon } from 'lucide-react';
 
@@ -37,17 +42,23 @@ export const navLinks = [
   { name: 'Contact', href: '#contact' },
 ];
 
-export const socialLinks = [
-  { name: 'GitHub', url: 'https://github.com/PRABHAT-72', icon: Github },
-  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/prabhat-kumar-032623197/', icon: Linkedin },
-  { name: 'Instagram', url: 'https://www.instagram.com/prabhat_kumar_72/', icon: Instagram },
-  { name: 'Twitter', url: 'https://twitter.com/prabhatkumar_72', icon: Twitter },
-  { name: 'YouTube', url: 'https://www.youtube.com/channel/UCf1_pf82D01-p34Gj5-b9gQ', icon: Youtube },
-  { name: 'Email', url: 'mailto:mailtoprabhat72@gmail.com', icon: Mail },
-  { name: 'Facebook', url: 'https://www.facebook.com/prabhatkumar72', icon: Facebook },
-  { name: 'Telegram', url: 'https://t.me/prabhatkumar72', icon: Send },
-  // Add other links from proposal if available
-];
+export const socialLinks: { name: string, icon: Icon, url: string }[] = [
+    { name: "GitHub", icon: Github, url: "https://github.com/Hugs-4-Bugs" },
+    { name: "LinkedIn", icon: Linkedin, url: "https://www.linkedin.com/in/prabhat-kumar-6963661a4/" },
+    { name: "Instagram", icon: Instagram, url: "https://www.instagram.com/_s_4_sharma/?utm_source=qr&igshid=MzNlNGNkZWQ4Mg%3D%3D" },
+    { name: "StackOverflow", icon: Layers, url: "https://stackoverflow.com/users/19520484/prabhat-kumar" },
+    { name: "Naukri", icon: Briefcase, url: "https://www.naukri.com/mnjuser/profile?id=&altresid" },
+    { name: "HackerRank", icon: Code, url: "https://www.hackerrank.com/profile/Prabhat_7250" },
+    { name: "LeetCode", icon: ListCheck, url: "https://leetcode.com/u/Hugs-2-Bugs/" },
+    { name: "GeeksforGeeks", icon: ListChecks, url: "https://www.geeksforgeeks.org/user/stealthy_prabhat/" },
+    { name: "Twitter", icon: Twitter, url: "https://x.com/Prabhat69e" },
+    { name: "YouTube", icon: Youtube, url: "https://www.youtube.com/@Hugs-4-Bugs" },
+    { name: "Email", icon: Mail, url: "mailto:mailtoprabhat72@gmail.com" },
+    { name: "Facebook", icon: Facebook, url: "https://www.facebook.com/profile.php?id=100009107757751" },
+    { name: "Telegram", icon: Send, url: "https://t.me/prabhat_7250" },
+    { name: "Dev.to", icon: Webhook, url: "https://dev.to/?signin=true" },
+    { name: "Portfolio", icon: Monitor, url: "https://prabhatkr.vercel.app/" }
+  ];
 
 export const projects = [
 
@@ -223,7 +234,7 @@ export const skillCategories: { name: string; icon: Icon; skills: { name: string
     skills: [
       { name: 'Spring Boot', icon: Server },
       { name: 'Node.js', icon: Server },
-      { name: 'REST API', icon: Link },
+      { name: 'REST API', icon: LinkIcon },
       { name: 'Java', icon: Code },
     ]
   },
@@ -331,7 +342,7 @@ export const services = [
   {
     name: 'API Development & Integration',
     description: 'Designing and building robust, scalable, and secure RESTful APIs to connect your applications and services.',
-    icon: Link,
+    icon: LinkIcon,
   },
   {
     name: 'Java Software Development',
