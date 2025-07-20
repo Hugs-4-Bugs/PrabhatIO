@@ -2,7 +2,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from 'react';
-import { Bot, Loader2, Mic, Send, Sparkles, X, Code, TrendingUp, Calendar } from 'lucide-react';
+import { Bot, Loader2, Mic, Send, Sparkles, X, Code, TrendingUp, Calendar, MessageSquare } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -13,7 +13,8 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { tradingExplanation } from '@/ai/flows/trading-explanation';
 import { projectExplanation } from '@/ai/flows/project-explanation';
 import { scheduleMeeting, ScheduleMeetingInput } from '@/ai/flows/schedule-meeting';
-import { projects } from '@/lib/data';
+import { generalChat } from '@/ai/flows/general-chat';
+import { projects, userDetails, experiences, services, tradingConcepts, skillCategories } from '@/lib/data';
 import { Avatar, AvatarFallback } from './ui/avatar';
 import { Input } from './ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
@@ -29,7 +30,7 @@ type Message = {
   audio?: string;
 };
 
-type InteractionMode = 'idle' | 'trading' | 'projects' | 'schedule';
+type InteractionMode = 'idle' | 'trading' | 'projects' | 'schedule' | 'general';
 
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
@@ -61,6 +62,15 @@ const useSessionState = <T,>(key: string, initialState: T): [T, React.Dispatch<R
 
   return [state, setState];
 };
+
+const websiteContext = `
+Prabhat Kumar's Details: ${userDetails}
+Projects: ${JSON.stringify(projects.map(p => ({ name: p.name, description: p.description, tags: p.tags })))}
+Experiences: ${JSON.stringify(experiences)}
+Services: ${JSON.stringify(services)}
+Skills: ${JSON.stringify(skillCategories)}
+Trading Concepts: ${JSON.stringify(tradingConcepts)}
+`;
 
 export default function AIChat() {
   const [isOpen, setIsOpen] = useState(false);
@@ -132,7 +142,9 @@ export default function AIChat() {
   const handleModeSelection = (newMode: InteractionMode) => {
     setMode(newMode);
     setInput('');
-    if (newMode === 'trading') {
+    if (newMode === 'general') {
+      addMessage('system', 'You can ask me anything about Prabhat Kumar, his skills, projects, or experience.');
+    } else if (newMode === 'trading') {
       addMessage('system', 'You can ask me to explain a trading concept (e.g., "What are Order Blocks?").');
     } else if (newMode === 'projects') {
       addMessage('system', 'Please select a project from the dropdown to get an AI-powered explanation.');
@@ -160,7 +172,10 @@ export default function AIChat() {
     setIsLoading(true);
 
     try {
-      if (mode === 'trading') {
+      if (mode === 'general') {
+        const res = await generalChat({ query: input, context: websiteContext });
+        addMessage('assistant', res.answer);
+      } else if (mode === 'trading') {
         const res = await tradingExplanation({ concept: input });
         addMessage('assistant', res.explanation, res.audio);
       } else if (mode === 'projects') {
@@ -205,6 +220,14 @@ export default function AIChat() {
     setInput('');
     setProjectSelection('');
     form.reset();
+  }
+  
+  const getPlaceholder = () => {
+    switch(mode) {
+        case 'general': return 'Ask me about Prabhat...';
+        case 'trading': return 'Ask about a trading concept...';
+        default: return 'Type your message...';
+    }
   }
 
   return (
@@ -259,6 +282,7 @@ export default function AIChat() {
                 <div className="text-center p-4">
                     <p className="text-muted-foreground mb-4">What would you like to discuss?</p>
                     <div className="flex flex-wrap gap-2 justify-center">
+                        <Button variant="outline" onClick={() => handleModeSelection('general')}><MessageSquare className="mr-2 h-4 w-4"/>General Chat</Button>
                         <Button variant="outline" onClick={() => handleModeSelection('trading')}><TrendingUp className="mr-2 h-4 w-4"/>Trading</Button>
                         <Button variant="outline" onClick={() => handleModeSelection('projects')}><Code className="mr-2 h-4 w-4"/>Projects</Button>
                         <Button variant="outline" onClick={() => handleModeSelection('schedule')}><Calendar className="mr-2 h-4 w-4"/>Schedule Meeting</Button>
@@ -300,9 +324,9 @@ export default function AIChat() {
                     </SelectContent>
                   </Select>
                 ) : (
-                  <Input value={input} onChange={e => setInput(e.target.value)} placeholder="Ask about a trading concept..." className="flex-1" disabled={isLoading} />
+                  <Input value={input} onChange={e => setInput(e.target.value)} placeholder={getPlaceholder()} className="flex-1" disabled={isLoading} />
                 )}
-                {mode === 'trading' && (
+                {(mode === 'trading' || mode === 'general') && (
                   <Button size="icon" variant="ghost" type="button" onClick={handleVoiceInput} disabled={isLoading} className={cn(isListening && 'text-red-500')}>
                       <Mic className="h-5 w-5" />
                   </Button>

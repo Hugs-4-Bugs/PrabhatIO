@@ -9,4 +9,5 @@ import '@/ai/flows/skill-summary.ts';
 import '@/ai/flows/project-explanation.ts';
 import '@/ai/flows/book-summary.ts';
 import '@/ai/flows/chapter-summary.ts';
+import '@/ai/flows/general-chat.ts';
 
