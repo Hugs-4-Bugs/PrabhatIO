@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { navLinks } from '@/lib/data';
 import { ThemeToggle } from '../theme-toggle';
 import { Button } from '../ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet';
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '../ui/sheet';
 import { Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Logo } from '../logo';
@@ -68,6 +68,7 @@ export function Header() {
                         </Button>
                     </SheetTrigger>
                     <SheetContent side="right" className="bg-background/90 backdrop-blur-lg">
+                        <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
                         <nav className="flex flex-col gap-4 mt-8">
                             {navItems}
                         </nav>
