@@ -51,7 +51,7 @@ export const socialLinks: { name: string, icon: Icon, url: string }[] = [
     { name: "HackerRank", icon: Code, url: "https://www.hackerrank.com/profile/Prabhat_7250" },
     { name: "LeetCode", icon: ListCheck, url: "https://leetcode.com/u/Hugs-2-Bugs/" },
     { name: "GeeksforGeeks", icon: ListChecks, url: "https://www.geeksforgeeks.org/user/stealthy_prabhat/" },
-    { name: "Twitter", icon: Twitter, url: "https://x.com/Prabhat69e" },
+    { name: "Twitter", icon: Twitter, url: "https://x.com/kattyPrabhat" },
     { name: "YouTube", icon: Youtube, url: "https://www.youtube.com/@Hugs-4-Bugs" },
     { name: "Email", icon: Mail, url: "mailto:mailtoprabhat72@gmail.com" },
     { name: "Facebook", icon: Facebook, url: "https://www.facebook.com/profile.php?id=100009107757751" },
