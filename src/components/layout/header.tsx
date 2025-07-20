@@ -55,7 +55,7 @@ export function Header() {
         <div className="flex items-center gap-2">
             {isClient && (
                 <div className="hidden md:flex items-center gap-1">
-                  <Socials />
+                  <Socials limit={5} />
                 </div>
             )}
             <ThemeToggle />
