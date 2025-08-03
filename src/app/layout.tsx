@@ -11,7 +11,6 @@ import AIChat from '@/components/ai-chat';
 import { Poppins, PT_Sans, Source_Code_Pro } from 'next/font/google';
 import { cn } from '@/lib/utils';
 import { Preloader } from '@/components/preloader';
-import { ReactLenis } from '@studio-freight/react-lenis'
 
 
 /*
@@ -64,25 +63,23 @@ export default function RootLayout({
         {loading ? (
           <Preloader />
         ) : (
-          <ReactLenis root>
-            <ThemeProvider>
-              <div className="relative isolate">
-                <div className="absolute inset-0 -z-10 h-full w-full">
-                  <div id="stars"></div>
-                  <div id="stars2"></div>
-                  <div id="stars3"></div>
-                </div>
-                <main className="relative z-10">
-                  {children}
-                </main>
+          <ThemeProvider>
+            <div className="relative isolate">
+              <div className="absolute inset-0 -z-10 h-full w-full">
+                <div id="stars"></div>
+                <div id="stars2"></div>
+                <div id="stars3"></div>
               </div>
-              <div className="relative z-[9999]">
-                <AIChat />
-              </div>
-              <Analytics />
-              <Toaster />
-            </ThemeProvider>
-          </ReactLenis>
+              <main className="relative z-10">
+                {children}
+              </main>
+            </div>
+            <div className="relative z-[9999]">
+              <AIChat />
+            </div>
+            <Analytics />
+            <Toaster />
+          </ThemeProvider>
         )}
       </body>
     </html>
