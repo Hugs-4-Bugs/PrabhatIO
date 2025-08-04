@@ -104,7 +104,7 @@ export function ContactSection() {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Full Name</FormLabel>
-                        <FormControl><Input placeholder="John Doe" {...field} /></FormControl>
+                        <FormControl><Input placeholder="Prabhat Kumar" {...field} /></FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
@@ -115,7 +115,7 @@ export function ContactSection() {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Email Address</FormLabel>
-                        <FormControl><Input placeholder="you@example.com" {...field} /></FormControl>
+                        <FormControl><Input placeholder="prabhat@quantumfusions.com" {...field} /></FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
