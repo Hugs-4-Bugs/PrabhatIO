@@ -131,7 +131,7 @@ export const projects = [
       description: 'Spring Boot project simulating Bitcoin mining operations with account management, transactions, and audit logging. Integrates BitcoinJ and REST APIs.',
       tags: ['Spring Boot', 'BitcoinJ', 'MySQL', 'REST API'],
       link: 'https://github.com/Hugs-4-Bugs/Bitcoin-Mining-App',
-      image: '/images/flight.png',
+      image: '/images/bitcoinmining.png',
       imageAiHint: 'bitcoin mining dashboard'
     },
     {
@@ -139,7 +139,7 @@ export const projects = [
       description: 'Spring Boot REST API for uploading multiple files to the database using Spring Data JPA. Supports multipart handling and easy integration.',
       tags: ['Spring Boot', 'REST API', 'File Upload'],
       link: 'https://github.com/Hugs-4-Bugs/MultiFileUpload-Using-Spring-Boot-Application',
-      image: '/images/bitcoinmining.png',
+      image: '/images/multifileupload.png',
       imageAiHint: 'file upload ui'
     },
     {
